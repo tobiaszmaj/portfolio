@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
-// @ts-ignore
 import TextPlugin from 'gsap/TextPlugin.js';
 import blobImg from 'assets/icons/blob.svg';
 import MainSVG from 'assets/icons/main.inline.svg';
@@ -16,6 +15,7 @@ import reactIcon from 'assets/icons/react.svg';
 import reduxIcon from 'assets/icons/redux.svg';
 import gatsbyIcon from 'assets/icons/gatsby.svg';
 import gitIcon from 'assets/icons/git.svg';
+import loaderIcon from 'assets/icons/loader.svg';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -113,6 +113,7 @@ const LandingImage = () => {
 
       gsap.set(wrapperRef.current, { opacity: 1 });
       gsap.set([monitor, plant, keyboard, technologyImg], { autoAlpha: 0 });
+      gsap.set([mobile, notification], { autoAlpha: 0 });
 
       const master = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
       const tl = gsap.timeline({ repeat: -1, ease: 'power3.inOut' });
@@ -131,6 +132,12 @@ const LandingImage = () => {
         'showMain'
       );
       master.to(screen, { duration: 0.5, fill: 'rgba(255,255,255, 0.8)' });
+      master.addLabel('showScreen');
+      master.to(
+        technologyImg,
+        { fill: 'rgba(255,255,255, 0.8)' },
+        'showScreen'
+      );
       master.addLabel('showNotification');
       master.fromTo(
         notification,
@@ -150,10 +157,12 @@ const LandingImage = () => {
         },
         'showNotification'
       );
+      master.set(technologyImg, { attr: { src: loaderIcon } }, 'showScreen');
+      master.to(technologyImg, { autoAlpha: 1 });
+      master.to(technologyImg, { autoAlpha: 0, delay: 1 });
       master.add(tl);
       technologies.map(({ name, icon }) => {
         const markedKeys = getMarkedKeys(name, keys);
-        console.log(markedKeys);
         tl.set(technologyImg, { attr: { src: icon } });
         tl.addLabel('show');
         tl.to(technologyImg, { duration: 1, autoAlpha: 1 }, 'show');
