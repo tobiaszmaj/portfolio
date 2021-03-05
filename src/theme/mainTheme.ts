@@ -12,17 +12,20 @@ const breakpoints: MediaQueryProps = {
 
 export const theme = {
   fonts: {
-    mainFont: `'Montserrat', sans-serif`,
+    mainFont: `'Poppins', sans-serif`,
   },
   white: 'hsl(0, 0%, 100%)',
   gray: 'hsl(0, 0%, 52%)',
   gray100: 'hsl(0, 0%, 98%)',
   dark: 'hsl(200, 15%, 8%)',
-  dark100: 'hsl(230, 17%, 14%)',
-  dark200: 'hsl(228, 28%, 20%)',
-  blue: 'hsl(201, 100%, 81%)',
+  dark100: 'hsl(251, 12%, 19%)',
+  darkGradient: 'linear-gradient(45deg, #25232a 0%, #3c3a4e 100%)',
+  blue: 'hsl(208, 63%, 57%)',
+  blue100: 'hsl(208, 100%, 74%)',
   light: 300,
-  semiBold: 500,
+  regular: 400,
+  medium: 500,
+  semiBold: 600,
   bold: 700,
   fontSize: {
     xs: '1.2rem',

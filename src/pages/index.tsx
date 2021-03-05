@@ -1,11 +1,16 @@
 import React from 'react';
 import SEO from 'components/atoms/SEO/SEO';
-import LandingImage from 'components/atoms/LandingImage/LandingImage';
+import Header from 'components/organisms/Header/Header';
+import Navbar from 'components/organisms/Navbar/Navbar';
+import Technologies from 'components/organisms/Technologies/Technologies';
 
 const IndexPage = () => (
   <>
     <SEO title="Home" />
-    <LandingImage />
+    <Navbar />
+    <Header />
+    <Technologies />
+    <div style={{ height: '1000px' }}></div>
   </>
 );
 

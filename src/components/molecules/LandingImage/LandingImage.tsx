@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import TextPlugin from 'gsap/TextPlugin.js';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import blobImg from 'assets/icons/blob.svg';
 import MainSVG from 'assets/icons/main.inline.svg';
 import NotificationSVG from 'assets/icons/notification.inline.svg';
@@ -15,9 +16,11 @@ import reactIcon from 'assets/icons/react.svg';
 import reduxIcon from 'assets/icons/redux.svg';
 import gatsbyIcon from 'assets/icons/gatsby.svg';
 import gitIcon from 'assets/icons/git.svg';
+import jestIcon from 'assets/icons/jest.svg';
 import loaderIcon from 'assets/icons/loader.svg';
 
 gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
   position: relative;
@@ -26,6 +29,7 @@ const Wrapper = styled.div`
   background: url(${blobImg}) no-repeat center;
   background-size: 100%;
   opacity: 0;
+  overflow: hidden;
 `;
 
 const MainSVGWrapper = styled.div`
@@ -73,6 +77,7 @@ const technologies = [
   { name: 'React', icon: reactIcon },
   { name: 'Redux', icon: reduxIcon },
   { name: 'Gatsby', icon: gatsbyIcon },
+  { name: 'Jest', icon: jestIcon },
   { name: 'Git', icon: gitIcon },
 ];
 
@@ -81,7 +86,9 @@ const getMarkedKeys = (word: string, keys: Array<Element>) => {
   const markedKeys = keys.filter(key =>
     letters.some(letter => key.id === letter)
   );
-  const sortedMarkedKeys = letters.map(s => markedKeys.find(t => t.id === s));
+  const sortedMarkedKeys = letters.map(letter =>
+    markedKeys.find(key => key.id === letter)
+  );
 
   return sortedMarkedKeys;
 };
@@ -111,13 +118,18 @@ const LandingImage = () => {
       const mobile = notificationSvg.querySelector('#mobile');
       const notification = notificationSvg.querySelector('#notification');
 
-      gsap.set(wrapperRef.current, { opacity: 1 });
       gsap.set([monitor, plant, keyboard, technologyImg], { autoAlpha: 0 });
       gsap.set([mobile, notification], { autoAlpha: 0 });
 
-      const master = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+      const master = gsap.timeline({
+        defaults: { ease: 'power3.inOut' },
+        scrollTrigger: {
+          trigger: mainSvg,
+        },
+      });
       const tl = gsap.timeline({ repeat: -1, ease: 'power3.inOut' });
 
+      master.to(wrapperRef.current, { duration: 1, opacity: 1 });
       master.addLabel('showMain');
       master.fromTo(
         [monitor, keyboard, plant],
