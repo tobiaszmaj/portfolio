@@ -13,6 +13,7 @@ const breakpoints: MediaQueryProps = {
 export const theme = {
   fonts: {
     mainFont: `'Poppins', sans-serif`,
+    subFont: `'Kalam', cursive`,
   },
   white: 'hsl(0, 0%, 100%)',
   gray: 'hsl(0, 0%, 52%)',
@@ -29,10 +30,12 @@ export const theme = {
   bold: 700,
   fontSize: {
     xs: '1.2rem',
-    s: '1.4rem',
-    m: '1.6rem',
+    s: '1.6rem',
+    m: '1.8rem',
     lg: '2rem',
-    xl: '2.4rem',
+    xl: '2.8rem',
+    xxl: '4.8rem',
+    xxxl: '8.6rem',
   },
   mq: Object.keys(breakpoints).reduce<Record<string, string>>(
     (acc, breakpoint) => {

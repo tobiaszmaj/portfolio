@@ -26,8 +26,8 @@ const Wrapper = styled.div`
   position: relative;
   width: 700px;
   height: 700px;
-  background: url(${blobImg}) no-repeat center;
-  background-size: 100%;
+  background: url(${blobImg}) no-repeat left;
+  background-size: 110%;
   opacity: 0;
   overflow: hidden;
 `;
@@ -37,8 +37,8 @@ const MainSVGWrapper = styled.div`
   width: 400px;
   height: 400px;
   top: 0;
-  left: 55%;
-  transform: translateX(-55%);
+  left: 65%;
+  transform: translateX(-65%);
 `;
 
 const MainSVGInnerWrapper = styled.div`
@@ -49,8 +49,8 @@ const NotificationSVGWrapper = styled.div`
   position: absolute;
   width: 170px;
   height: 170px;
-  right: 140px;
-  top: 390px;
+  right: 100px;
+  bottom: 130px;
 `;
 
 const TextWrapper = styled.div`
