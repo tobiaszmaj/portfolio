@@ -117,7 +117,6 @@ const Header = () => {
         links,
         { autoAlpha: 0, y: -50 },
         {
-          duration: 1,
           autoAlpha: 1,
           y: 0,
           delay: 4,

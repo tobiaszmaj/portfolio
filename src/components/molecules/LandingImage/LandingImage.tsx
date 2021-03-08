@@ -191,9 +191,9 @@ const LandingImage = () => {
         );
         tl.to(text, { duration: 1, text: name }, 'show');
         tl.addLabel('hide');
-        tl.to(backspace, { fill: 'rgb(158, 221, 255)', delay: 1.8 }, 'hide');
-        tl.to(text, { duration: 1, text: ' ', delay: 2 }, 'hide');
-        tl.to(technologyImg, { duration: 1, autoAlpha: 0, delay: 2 }, 'hide');
+        tl.to(backspace, { fill: 'rgb(158, 221, 255)', delay: 1.2 }, 'hide');
+        tl.to(text, { duration: 1, text: ' ', delay: 1.5 }, 'hide');
+        tl.to(technologyImg, { duration: 1, autoAlpha: 0, delay: 1.5 }, 'hide');
         tl.to(backspace, { fill: 'rgb(43, 48, 63)' });
       });
     }
