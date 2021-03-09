@@ -5,7 +5,7 @@ interface MediaQueryProps {
 const breakpoints: MediaQueryProps = {
   xs: 420,
   s: 576,
-  md: 768,
+  md: 800,
   lg: 992,
   xl: 1200,
 };
@@ -23,6 +23,7 @@ export const theme = {
   darkGradient: 'linear-gradient(45deg, #25232a 0%, #3c3a4e 100%)',
   green: 'hsl(128, 50%, 47%)',
   blue: 'hsl(208, 63%, 57%)',
+  blue50: 'hsl(208, 73%, 63%)',
   blue100: 'hsl(208, 100%, 74%)',
   light: 300,
   regular: 400,

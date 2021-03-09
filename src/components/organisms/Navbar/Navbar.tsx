@@ -1,19 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { Link } from 'gatsby';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import styled, { css } from 'styled-components';
 import Content from 'components/atoms/Content/Content';
+import MenuBtn from 'components/atoms/MenuBtn/MenuBtn';
 import logoImg from 'assets/images/logo.png';
+import { NavigationContext } from 'contexts/NavigationContext';
 
 interface Props {
   readonly isActive: boolean;
 }
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Wrapper = styled.nav<Props>`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -22,12 +21,15 @@ const Wrapper = styled.nav<Props>`
   box-shadow: none;
   background-color: transparent;
   transition: 0.3s;
-  ${({ isActive }) =>
+  ${({ theme }) => theme.mq.md} {
+    position: fixed;
+    ${({ isActive }) =>
     isActive &&
     css`
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      background-color: ${({ theme }) => theme.dark100};
-    `}
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: ${({ theme }) => theme.dark100};
+      `}
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -48,8 +50,12 @@ const LogoWrapper = styled(Link)`
 
 const LogoInnerWrapper = styled.div`
   display: block;
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
+  ${({ theme }) => theme.mq.s} {
+    width: 65px;
+    height: 65px;
+  }
 `;
 
 const Logo = styled.img`
@@ -59,9 +65,12 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h3`
-  font-size: ${({ theme }) => theme.fontSize.m};
-  font-weight: ${({ theme }) => theme.bold};
   margin-left: 10px;
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.m};
+  }
 `;
 
 const List = styled.ul`
@@ -70,6 +79,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li<Props>`
+display: none;
   position: relative;
   margin-left: 35px;
   font-weight: ${({ theme }) => theme.medium};
@@ -100,6 +110,9 @@ const ListItem = styled.li<Props>`
         transform: scaleX(1);
       }
     `}
+    ${({ theme }) => theme.mq.md} {
+      display: block;
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -109,31 +122,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState('home');
-  const [isOnTop, setIsOnTop] = useState(false);
+  const { activeLink, isTransparent } = useContext(NavigationContext);
   const wrapperRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const list = listRef.current;
-    ScrollTrigger.create({
-      start: '50',
-      onToggle: self => setIsOnTop(self.isActive),
-    });
-
-    ScrollTrigger.create({
-      trigger: '#home',
-      start: 'top center',
-      end: '+=500',
-      onToggle: ({ isActive }) => isActive && setActiveLink('home'),
-    });
-
-    ScrollTrigger.create({
-      trigger: '#technologies',
-      start: 'top center',
-      end: '+=500',
-      onToggle: ({ isActive }) => isActive && setActiveLink('technologies'),
-    });
 
     if (list) {
       const listItems = list.children;
@@ -152,7 +146,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <Wrapper ref={wrapperRef} isActive={isOnTop}>
+    <Wrapper ref={wrapperRef} isActive={!isTransparent}>
       <Content>
         <InnerWrapper>
           <LogoWrapper to="/">
@@ -179,6 +173,7 @@ const Navbar = () => {
               <StyledLink to="#contact">Contact</StyledLink>
             </ListItem>
           </List>
+          <MenuBtn />
         </InnerWrapper>
       </Content>
     </Wrapper>

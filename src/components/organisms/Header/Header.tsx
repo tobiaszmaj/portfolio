@@ -13,7 +13,7 @@ interface Props {
 const Wrapper = styled.header`
   position: relative;
   width: 100%;
-  height: 100vh;
+  padding: 100px 0;
   background: ${({ theme }) => theme.darkGradient};
   &:after {
     content: '';
@@ -25,47 +25,85 @@ const Wrapper = styled.header`
     clip-path: polygon(100% 88%, 0 100%, 100% 100%);
     background: ${({ theme }) => theme.blue};
   }
+  @media (min-height: 620px) {
+    height: 100vh;
+  }
 `;
 
 const InnerWrapper = styled.div`
   width: 100%;
-  height: 88%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: ${({ theme }) => theme.fonts.subFont};
   color: ${({ theme }) => theme.white};
+  ${({ theme }) => theme.mq.s} {
+    height: 88%;
+  }
 `;
 
 const Links = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  ${({ theme }) => theme.mq.s} {
+    flex-direction: row;
+  }
 `;
 
 const LinkWrapper = styled.div`
-  margin: 0 20px;
+margin: 10px 0;
   opacity: 0;
+  ${({ theme }) => theme.mq.s} {
+    margin: 0 20px;
+  }
 `;
 
 const TitleWrapper = styled.div`
+width: 320px;
+  height: 200px;
+  ${({ theme }) => theme.mq.md} {
+    width: 750px;
+    height: auto;
+  }
   opacity: 0;
 `;
 
-const SubTitle = styled.h2<Props>`
-  position: relative;
-  font-size: ${({ theme }) => theme.fontSize.xl};
+const SubTitle = styled.h2`
+  display: flex;
+  text-align: center;
+  line-height: 36px;
+  font-size: ${({ theme }) => theme.fontSize.xlg};
   font-weight: ${({ theme }) => theme.regular};
   padding: 5px 0;
-  margin-bottom: -25px;
+  margin-bottom: -40px;
   opacity: 0;
+  ${({ theme }) => theme.mq.md} {
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    margin-bottom: -25px;
+  }
+`;
+
+const Intro = styled.span`
+  white-space: pre;
+  display: none;
+  ${({ theme }) => theme.mq.xs} {
+    display: block;
+  }
+`;
+
+const Name = styled.span<Props>`
+  position: relative;
+  white-space: nowrap;
   &:after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 35%;
+    left: 0;
     right: 0;
     height: 2px;
     border-radius: 100px;
@@ -112,7 +150,12 @@ const Header = () => {
         },
         'start'
       );
-      tl.to(subTitle, { duration: 1, autoAlpha: 1, delay: 2.5 }, 'start');
+      tl.fromTo(
+        subTitle,
+        { autoAlpha: 0, y: 50 },
+        { duration: 1, y: 0, autoAlpha: 1, delay: 2.5 },
+        'start'
+      );
       tl.fromTo(
         links,
         { autoAlpha: 0, y: -50 },
@@ -131,8 +174,9 @@ const Header = () => {
     <Wrapper id="home">
       <Content>
         <InnerWrapper>
-          <SubTitle isActive={isLineActive} ref={subTitleRef}>
-            Hey, I'm a Front End Developer
+          <SubTitle ref={subTitleRef}>
+            <Intro>Hey, I'm a </Intro>
+            <Name isActive={isLineActive}>Front End Developer</Name>
           </SubTitle>
           <TitleWrapper ref={titleRef}>
             <Title />

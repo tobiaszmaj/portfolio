@@ -11,8 +11,9 @@ interface Props {
 
 const Wrapper = styled.section`
 position: relative;
-  background-color: ${({ theme }) => theme.blue};
-  &:after {
+padding: 50px 0;
+background-color: ${({ theme }) => theme.blue};
+&:after {
     content: '';
     position: absolute;
     top: 0;
@@ -66,8 +67,9 @@ const Heading = styled.h2<Props>`
 `;
 
 const Paragraph = styled.p`
-  padding: 20px 0;
+padding: 20px 0 30px;
   font-size: ${({ theme }) => theme.fontSize.lg};
+  font-weight: ${({ theme }) => theme.light};
   line-height: 24px;
   max-width: 640px;
 `;
@@ -152,10 +154,10 @@ const Technologies = () => {
                 <ListItem>CSS3</ListItem>
                 <ListItem>Sass/SCSS</ListItem>
                 <ListItem>BEM</ListItem>
+                <ListItem>Mobile First</ListItem>
                 <ListItem>JavaScript ES6+</ListItem>
                 <ListItem>TypeScript</ListItem>
-                <ListItem>React</ListItem>
-                <ListItem>React Hooks</ListItem>
+                <ListItem>React & Hooks</ListItem>
                 <ListItem>Redux</ListItem>
                 <ListItem>Gatsby</ListItem>
                 <ListItem>GraphQL</ListItem>

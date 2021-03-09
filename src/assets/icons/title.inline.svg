@@ -1,68 +1,97 @@
-<svg id="title-svg" width="750px" height="143px" viewBox="0 0 750 143" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<svg id="title-svg" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<defs>
       <style>
+			.container {
+				font-size: 68px;
+			}
 			text {
   			stroke-dasharray: 1000;
   			stroke-dashoffset: 1000;
 			}
+			#name-t {transform: translate(47px)}
+			#name-o {transform: translate(77px)}
+			#name-b {transform: translate(107px)}
+			#name-i {transform: translate(145px)}
+			#name-a {transform: translate(160px)}
+			#name-s {transform: translate(194px)}
+			#name-z {transform: translate(222px)}
+
+			#surname-m {transform: translate(96px, 65px)}
+			#surname-a {transform: translate(150px, 65px)}
+			#surname-j {transform: translate(182px, 65px)}
+			@media (min-width: 800px) {
+				.container {
+					font-size: 88px;
+				}
+				#name-t {transform: translate(143px)}
+				#name-o {transform: translate(182px)}
+				#name-b {transform: translate(224px)}
+				#name-i {transform: translate(271px)}
+				#name-a {transform: translate(296px)}
+				#name-s {transform: translate(341px)}
+				#name-z {transform: translate(381px)}
+				#surname-m {transform: translate(457px)}
+				#surname-a {transform: translate(529px)}
+				#surname-j {transform: translate(572px)}
+			}
+			
       @import url('https://fonts.googleapis.ccss2family=Kalam:wght@700');
       </style>
 			  </defs>
-			    <g id="Daily-UI-003" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="Kalam" font-size="88">
-			      <g class="letter" stroke="#fff" stroke-width="2">
-			        <text>
-			            <tspan x="3.77" y="118"></tspan>
-			        </text>
-			      </g>
-						<g transform="translate(141)" class="letter" stroke="#fff" stroke-width="2">
+			    <g class="container" id="Daily-UI-003" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="Kalam">
+					<g class="name">
+						<g id="name-t" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">T</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(180)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="name-o" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">o</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(222)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="name-b" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">b</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(270)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="name-i" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">i</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(297)" class="letter" stroke="#fff" stroke-width="2">
+				  <g id="name-a" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">a</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(335)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="name-s" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">s</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(373)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="name-z" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">z</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(455)" class="letter" stroke="#fff" stroke-width="2">
+					</g>
+					<g class="surname">
+						<g id="surname-m" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">M</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(527)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="surname-a" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">a</tspan>
 			        </text>
 			      </g>
-						<g transform="translate(569)" class="letter" stroke="#fff" stroke-width="2">
+						<g id="surname-j" class="letter" stroke="#fff" stroke-width="2">
 			        <text>
 			            <tspan x="3.77" y="118">j</tspan>
 			        </text>
 			      </g>
+				</g>
 			  </g>
-</svg> 
+</svg>

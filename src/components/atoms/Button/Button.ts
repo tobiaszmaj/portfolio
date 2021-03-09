@@ -1,8 +1,8 @@
 import styled, { css, keyframes } from 'styled-components';
 
 interface Props {
-    readonly secondary?: boolean | string;
-    readonly animated?: boolean | string;
+  readonly secondary?: boolean | string;
+  readonly animated?: boolean | string;
 }
 
 const pulse = keyframes`
@@ -16,7 +16,7 @@ const pulse = keyframes`
 
 const Button = styled.button<Props>`
   display: block;
-  width: 200px;
+  width: 220px;
   padding: 20px;
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.mainFont};
@@ -32,14 +32,14 @@ const Button = styled.button<Props>`
     color: ${({ theme }) => theme.dark};
   }
   ${({ secondary }) =>
-        secondary &&
-        css`
+    secondary &&
+    css`
       background-color: transparent;
       color: ${({ theme }) => theme.blue};
     `}
   ${({ animated }) =>
-        animated &&
-        css`
+    animated &&
+    css`
       box-shadow: 0 0 0 0 rgba(217, 244, 255, 0.15);
       animation: ${pulse} 3.5s infinite cubic-bezier(0.66, 0, 0, 1);
       animation-delay: 2s;
