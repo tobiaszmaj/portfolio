@@ -7,17 +7,17 @@ import blobImg from 'assets/icons/blob.svg';
 import MainSVG from 'assets/icons/main.inline.svg';
 import NotificationSVG from 'assets/icons/notification.inline.svg';
 import Text from 'assets/icons/text.inline.svg';
-import htmlIcon from 'assets/icons/html.svg';
-import cssIcon from 'assets/icons/css.svg';
-import sassIcon from 'assets/icons/sass.svg';
-import jsIcon from 'assets/icons/javascript.svg';
-import tsIcon from 'assets/icons/typescript.svg';
-import reactIcon from 'assets/icons/react.svg';
-import reduxIcon from 'assets/icons/redux.svg';
-import gatsbyIcon from 'assets/icons/gatsby.svg';
-import gitIcon from 'assets/icons/git.svg';
-import jestIcon from 'assets/icons/jest.svg';
-import loaderIcon from 'assets/icons/loader.svg';
+import htmlIcon from 'assets/icons/html-skew.svg';
+import cssIcon from 'assets/icons/css-skew.svg';
+import sassIcon from 'assets/icons/sass-skew.svg';
+import jsIcon from 'assets/icons/javascript-skew.svg';
+import tsIcon from 'assets/icons/typescript-skew.svg';
+import reactIcon from 'assets/icons/react-skew.svg';
+import reduxIcon from 'assets/icons/redux-skew.svg';
+import gatsbyIcon from 'assets/icons/gatsby-skew.svg';
+import gitIcon from 'assets/icons/git-skew.svg';
+import jestIcon from 'assets/icons/jest-skew.svg';
+import loaderIcon from 'assets/icons/loader-skew.svg';
 
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -221,7 +221,7 @@ const HeroAnimation = () => {
           <TextWrapper>
             <Text />
           </TextWrapper>
-          <Image ref={imageRef} src={htmlIcon} />
+          <Image ref={imageRef} />
         </MainSVGInnerWrapper>
       </MainSVGWrapper>
     </Wrapper>

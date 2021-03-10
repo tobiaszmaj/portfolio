@@ -18,7 +18,7 @@ export const theme = {
   },
   white: 'hsl(0, 0%, 100%)',
   gray: 'hsl(0, 0%, 52%)',
-  gray100: 'hsl(0, 0%, 98%)',
+  gray100: 'hsl(0, 0%, 96%)',
   dark: 'hsl(200, 15%, 8%)',
   dark100: 'hsl(251, 12%, 19%)',
   dark200: 'hsl(246, 15%, 25%)',

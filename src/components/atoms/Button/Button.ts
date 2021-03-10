@@ -19,23 +19,25 @@ const Button = styled.button<Props>`
   width: 220px;
   padding: 20px;
   text-align: center;
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-family: ${({ theme }) => theme.fonts.mainFont};
   border: 2px solid ${({ theme }) => theme.blue};
-  background-color: ${({ theme }) => theme.blue};
+  background: ${({ theme }) => theme.blue};
   color: ${({ theme }) => theme.dark};
   transition: 0.3s;
   border-radius: 50px;
   text-decoration: none;
+  cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.white};
+    background: ${({ theme }) => theme.white};
     border-color: ${({ theme }) => theme.white};
     color: ${({ theme }) => theme.dark};
   }
   ${({ secondary }) =>
     secondary &&
     css`
-      background-color: transparent;
-      color: ${({ theme }) => theme.blue};
+      background: transparent;
+      color: ${({ theme }) => theme.blue} !important;
     `}
   ${({ animated }) =>
     animated &&

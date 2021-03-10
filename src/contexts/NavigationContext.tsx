@@ -55,6 +55,13 @@ const NavigationProvider = ({ children }: Props) => {
             end: '+=500',
             onToggle: ({ isActive }) => isActive && setActiveLink('technologies'),
         });
+
+        ScrollTrigger.create({
+            trigger: '#projects',
+            start: 'top center',
+            end: '+=500',
+            onToggle: ({ isActive }) => isActive && setActiveLink('projects'),
+        });
     }, []);
 
     const context = {

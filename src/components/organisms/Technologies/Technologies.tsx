@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
@@ -8,7 +8,7 @@ import checkmarkIcon from 'assets/icons/checkmark.svg';
 
 const Wrapper = styled.section`
 position: relative;
-padding: 50px 0;
+padding: 50px 0 20px;
 background-color: ${({ theme }) => theme.blue};
 &:after {
     content: '';
@@ -17,8 +17,11 @@ background-color: ${({ theme }) => theme.blue};
     left: 0;
     right: 0;
     bottom: 0;
-    clip-path: polygon(0 88%, 0 100%, 100% 100%);
+    clip-path: polygon(0 calc(100% - 50px), 0% 100%, 100% 100%);
     background: ${({ theme }) => theme.white};
+    ${({ theme }) => theme.mq.md} {
+      clip-path: polygon(0 calc(100% - 90px), 0% 100%, 100% 100%);
+    }
   }
 `;
 
@@ -26,26 +29,28 @@ const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0 120px;
+  padding: 0 0 80px;
   color: ${({ theme }) => theme.white};
+  ${({ theme }) => theme.mq.md} {
+    padding: 20px 0 80px;
+  }
   ${({ theme }) => theme.mq.md} {
     flex-direction: column;
   }
   ${({ theme }) => theme.mq.xl} {
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch;
+    padding: 20px 0 120px;
+  }
+  ${({ theme }) => theme.mq.xxl} {
+    padding: 20px 0 60px;
   }
 `;
 
 const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const StyledInnerWrapper = styled(InnerWrapper)`
-${({ theme }) => theme.mq.md} {
-  margin: 10px 0 20px;
-}
 `;
 
 const ListsWrapper = styled.div`
@@ -97,29 +102,14 @@ const ListItem = styled.li`
 `;
 
 const Technologies = () => {
-  const [isLineActive, setIsLineActive] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
   const list1Ref = useRef<HTMLUListElement>(null);
   const list2Ref = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const header = headerRef.current;
     const firstList = list1Ref.current;
     const secondList = list2Ref.current;
 
-    if (header && firstList && secondList) {
-      [...header.children].map(child => {
-        gsap.from(child, {
-          autoAlpha: 0,
-          x: -30,
-          onComplete: () => setIsLineActive(true),
-          scrollTrigger: {
-            trigger: child,
-            start: 'top bottom-=50px',
-          },
-        });
-      });
-
+    if (firstList && secondList) {
       [...firstList.children, ...secondList.children].map(child => {
         gsap.from(child, {
           autoAlpha: 0,
@@ -138,13 +128,10 @@ const Technologies = () => {
       <Content>
         <Main>
           <InnerWrapper>
-            <StyledInnerWrapper ref={headerRef}>
-              <SectionHeader
-                isLineActive={isLineActive}
-                title="Technologies"
-                paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
-              />
-            </StyledInnerWrapper>
+            <SectionHeader
+              title="Technologies"
+              paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
+            />
             <ListsWrapper>
               <StyledList ref={list1Ref}>
                 <ListItem>HTML5</ListItem>

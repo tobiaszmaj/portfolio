@@ -4,12 +4,12 @@ import styled, { css } from 'styled-components';
 import { NavigationContext } from 'contexts/NavigationContext';
 
 interface Props {
-    big?: boolean;
+  big?: boolean;
 }
 
 interface ItemProps {
-    readonly isActive: boolean;
-    readonly big: boolean;
+  readonly isActive: boolean;
+  readonly big: boolean;
 }
 
 const ListItem = styled.li<ItemProps>`
@@ -35,16 +35,16 @@ const ListItem = styled.li<ItemProps>`
     transform-origin: 0 50%;
   }
   ${({ isActive }) =>
-        isActive &&
-        css`
+    isActive &&
+    css`
       color: ${({ theme }) => theme.blue100};
       &:after {
         transform: scaleX(1);
       }
     `}
   ${({ big, isActive }) =>
-        big &&
-        css`
+    big &&
+    css`
       margin: 20px 0;
       color: ${({ theme }) => theme.white};
       font-size: ${({ theme }) => theme.fontSize.xl};
@@ -75,24 +75,24 @@ const StyledLink = styled(Link)`
 `;
 
 const Links = ({ big }: Props) => {
-    const { activeLink } = useContext(NavigationContext);
+  const { activeLink } = useContext(NavigationContext);
 
-    return (
-        <>
-            <ListItem big={big || false} isActive={activeLink === 'home'}>
-                <StyledLink to="#home">Home</StyledLink>
-            </ListItem>
-            <ListItem big={big || false} isActive={activeLink === 'technologies'}>
-                <StyledLink to="#technologies">Technologies</StyledLink>
-            </ListItem>
-            <ListItem big={big || false} isActive={activeLink === 'portfolio'}>
-                <StyledLink to="#portfolio">Portfolio</StyledLink>
-            </ListItem>
-            <ListItem big={big || false} isActive={activeLink === 'contact'}>
-                <StyledLink to="#contact">Contact</StyledLink>
-            </ListItem>
-        </>
-    );
+  return (
+    <>
+      <ListItem big={big || false} isActive={activeLink === 'home'}>
+        <StyledLink to="#home">Home</StyledLink>
+      </ListItem>
+      <ListItem big={big || false} isActive={activeLink === 'technologies'}>
+        <StyledLink to="#technologies">Technologies</StyledLink>
+      </ListItem>
+      <ListItem big={big || false} isActive={activeLink === 'projects'}>
+        <StyledLink to="#projects">Projects</StyledLink>
+      </ListItem>
+      <ListItem big={big || false} isActive={activeLink === 'contact'}>
+        <StyledLink to="#contact">Contact</StyledLink>
+      </ListItem>
+    </>
+  );
 };
 
 export default Links;

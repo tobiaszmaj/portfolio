@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
 
 interface Props {
-    isLineActive: boolean;
-    title: string;
-    paragraph?: string;
+  title: string;
+  paragraph?: string;
+  lineColor?: 'dark' | 'white';
 }
 
 interface HeadingProps {
-    readonly isActive: boolean;
+  readonly isActive: boolean;
+  readonly lineColor?: string;
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${({ theme }) => theme.mq.md} {
+    margin: 10px 0 20px;
+  }
+`;
 
 const Heading = styled.h2<HeadingProps>`
   position: relative;
-  padding-bottom: 15px;
+  padding-bottom: 17px;
   font-size: ${({ theme }) => theme.fontSize.xxlm};
   ${({ theme }) => theme.mq.s} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
@@ -25,7 +35,8 @@ const Heading = styled.h2<HeadingProps>`
     bottom: 0;
     width: 150px;
     height: 4px;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ lineColor, theme }) =>
+    lineColor === 'dark' ? theme.dark200 : theme.white};
     border-radius: 100px;
     transition: 0.3s;
     transform-origin: 0 50%;
@@ -50,11 +61,36 @@ const Paragraph = styled.p`
   }
 `;
 
-const SectionHeader = ({ isLineActive, title, paragraph }: Props) => (
-    <>
-        <Heading isActive={isLineActive}>{title}</Heading>
-        <Paragraph>{paragraph}</Paragraph>
-    </>
-);
+const SectionHeader = ({ lineColor, title, paragraph }: Props) => {
+  const [isLineActive, setIsLineActive] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+
+    if (header) {
+      [...header.children].map(child => {
+        gsap.from(child, {
+          autoAlpha: 0,
+          x: -30,
+          onComplete: () => setIsLineActive(true),
+          scrollTrigger: {
+            trigger: child,
+            start: 'top bottom-=50px',
+          },
+        });
+      });
+    }
+  }, []);
+
+  return (
+    <Wrapper ref={headerRef}>
+      <Heading lineColor={lineColor} isActive={isLineActive}>
+        {title}
+      </Heading>
+      <Paragraph>{paragraph}</Paragraph>
+    </Wrapper>
+  );
+};
 
 export default SectionHeader;
