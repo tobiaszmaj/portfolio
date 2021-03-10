@@ -47,6 +47,13 @@ const ListsWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const AnimationWrapper = styled.div`
+  display: none;
+  ${({ theme }) => theme.mq.md} {
+    display: block;
+  }
+`;
+
 const Heading = styled.h2<Props>`
   position: relative;
   padding-bottom: 15px;
@@ -177,7 +184,9 @@ const Technologies = () => {
               </List>
             </ListsWrapper>
           </InnerWrapper>
-          <LandingImage />
+          <AnimationWrapper>
+            <LandingImage />
+          </AnimationWrapper>
         </Main>
       </Content>
     </Wrapper>

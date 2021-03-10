@@ -1,11 +1,4 @@
-import React, {
-    Dispatch,
-    SetStateAction,
-    useState,
-    useEffect,
-    createContext,
-    ReactNode,
-} from 'react';
+import React, { useState, useEffect, createContext, ReactNode } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -17,14 +10,14 @@ interface ContextProps {
     activeLink: string;
     isTransparent: boolean;
     isFullNavVisible: boolean;
-    setIsFullNavVisible: Dispatch<SetStateAction<boolean>>;
+    handleFullNav: (isVisible: boolean) => void;
 }
 
 export const NavigationContext = createContext<ContextProps>({
     activeLink: 'home',
     isTransparent: true,
     isFullNavVisible: false,
-    setIsFullNavVisible: () => null,
+    handleFullNav: () => null,
 });
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +26,13 @@ const NavigationProvider = ({ children }: Props) => {
     const [activeLink, setActiveLink] = useState('home');
     const [isTransparent, setIsTransparent] = useState(true);
     const [isFullNavVisible, setIsFullNavVisible] = useState(false);
+
+    const handleFullNav = (isVisible: boolean) => {
+        setIsFullNavVisible(isVisible);
+
+        if (isVisible) document.body.style.overflow = 'hidden';
+        else document.body.style.overflow = 'auto';
+    };
 
     useEffect(() => {
         ScrollTrigger.create({
@@ -59,7 +59,7 @@ const NavigationProvider = ({ children }: Props) => {
         activeLink,
         isTransparent,
         isFullNavVisible,
-        setIsFullNavVisible,
+        handleFullNav,
     };
 
     return (
