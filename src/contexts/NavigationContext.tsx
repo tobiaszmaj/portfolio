@@ -2,6 +2,8 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 interface Props {
     children: ReactNode;
 }
@@ -20,8 +22,6 @@ export const NavigationContext = createContext<ContextProps>({
     handleFullNav: () => null,
 });
 
-gsap.registerPlugin(ScrollTrigger);
-
 const NavigationProvider = ({ children }: Props) => {
     const [activeLink, setActiveLink] = useState('home');
     const [isTransparent, setIsTransparent] = useState(true);
@@ -37,6 +37,8 @@ const NavigationProvider = ({ children }: Props) => {
     useEffect(() => {
         ScrollTrigger.create({
             start: '50',
+            endTrigger: 'footer',
+            end: 'bottom top',
             onToggle: ({ isActive }) => setIsTransparent(!isActive),
         });
 

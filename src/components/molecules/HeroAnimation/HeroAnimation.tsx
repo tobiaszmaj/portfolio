@@ -24,12 +24,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
   position: relative;
-  width: 700px;
-  height: 700px;
-  background: url(${blobImg}) no-repeat left;
-  background-size: 110%;
+  width: 620px;
+  height: 620px;
+  background: url(${blobImg}) no-repeat;
+  background-position: 20% 50%;
+  background-size: 115%;
   opacity: 0;
   overflow: hidden;
+  ${({ theme }) => theme.mq.xxl} {
+    width: 700px;
+    height: 700px;
+    background-size: 110%;
+    background-position: 0% 50%;
+  }
 `;
 
 const MainSVGWrapper = styled.div`
@@ -49,8 +56,12 @@ const NotificationSVGWrapper = styled.div`
   position: absolute;
   width: 170px;
   height: 170px;
-  right: 100px;
-  bottom: 130px;
+  right: 80px;
+  bottom: 70px;
+  ${({ theme }) => theme.mq.xxl} {
+    right: 100px;
+    bottom: 130px;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -93,7 +104,7 @@ const getMarkedKeys = (word: string, keys: Array<Element>) => {
   return sortedMarkedKeys;
 };
 
-const LandingImage = () => {
+const HeroAnimation = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
@@ -217,4 +228,4 @@ const LandingImage = () => {
   );
 };
 
-export default LandingImage;
+export default HeroAnimation;

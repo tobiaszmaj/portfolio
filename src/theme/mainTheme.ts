@@ -8,6 +8,7 @@ const breakpoints: MediaQueryProps = {
   md: 800,
   lg: 992,
   xl: 1200,
+  xxl: 1400,
 };
 
 export const theme = {
@@ -39,6 +40,7 @@ export const theme = {
     lg: '2rem',
     xlg: '2.3rem',
     xl: '2.8rem',
+    xxlm: '3.6rem',
     xxl: '4.8rem',
     xxxl: '8.6rem',
   },

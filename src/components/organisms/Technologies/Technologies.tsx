@@ -2,12 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
-import LandingImage from 'components/molecules/LandingImage/LandingImage';
+import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
+import HeroAnimation from 'components/molecules/HeroAnimation/HeroAnimation';
 import checkmarkIcon from 'assets/icons/checkmark.svg';
-
-interface Props {
-  readonly isActive: boolean;
-}
 
 const Wrapper = styled.section`
 position: relative;
@@ -27,9 +24,17 @@ background-color: ${({ theme }) => theme.blue};
 
 const Main = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 30px 0 150px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 120px;
   color: ${({ theme }) => theme.white};
+  ${({ theme }) => theme.mq.md} {
+    flex-direction: column;
+  }
+  ${({ theme }) => theme.mq.xl} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -38,47 +43,24 @@ const InnerWrapper = styled.div`
 `;
 
 const StyledInnerWrapper = styled(InnerWrapper)`
+${({ theme }) => theme.mq.md} {
   margin: 10px 0 20px;
+}
 `;
 
 const ListsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  max-width: 720px;
 `;
 
 const AnimationWrapper = styled.div`
   display: none;
   ${({ theme }) => theme.mq.md} {
     display: block;
+    margin: 30px 0;
   }
-`;
-
-const Heading = styled.h2<Props>`
-  position: relative;
-  padding-bottom: 15px;
-  font-size: ${({ theme }) => theme.fontSize.xxl};
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 150px;
-    height: 4px;
-    background-color: ${({ theme }) => theme.white};
-    border-radius: 100px;
-    transition: 0.3s;
-    transform-origin: 0 50%;
-    transform: ${({ isActive }) => (isActive ? 'scaleX(1)' : 'scaleX(0)')};
-  }
-`;
-
-const Paragraph = styled.p`
-padding: 20px 0 30px;
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  font-weight: ${({ theme }) => theme.light};
-  line-height: 24px;
-  max-width: 640px;
 `;
 
 const List = styled.ul`
@@ -87,23 +69,30 @@ const List = styled.ul`
 `;
 
 const StyledList = styled(List)`
-  margin-right: 100px;
+margin-right: 20px;
 `;
 
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  font-size: ${({ theme }) => theme.fontSize.xlg};
+  font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: ${({ theme }) => theme.light};
   margin: 8px 0;
   &:before {
     content: '';
     display: block;
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     background: url(${checkmarkIcon}) no-repeat center;
     background-size: 100%;
     margin-right: 10px;
+  }
+  ${({ theme }) => theme.mq.s} {
+    font-size: ${({ theme }) => theme.fontSize.xlg};
+    &:before {
+      width: 28px;
+      height: 28px;
+    }
   }
 `;
 
@@ -119,26 +108,27 @@ const Technologies = () => {
     const secondList = list2Ref.current;
 
     if (header && firstList && secondList) {
-      gsap.set([header, firstList, secondList], { autoAlpha: 0 });
-
-      const tl = gsap.timeline({
-        defaults: { ease: 'power3.inOut' },
-        scrollTrigger: {
-          trigger: header,
-        },
+      [...header.children].map(child => {
+        gsap.from(child, {
+          autoAlpha: 0,
+          x: -30,
+          onComplete: () => setIsLineActive(true),
+          scrollTrigger: {
+            trigger: child,
+            start: 'top bottom-=50px',
+          },
+        });
       });
 
-      tl.to([header, firstList, secondList], { autoAlpha: 1 });
-      tl.from(header.children, {
-        autoAlpha: 0,
-        x: -30,
-        stagger: 0.3,
-        onComplete: () => setIsLineActive(true),
-      });
-      tl.from([firstList.children, secondList.children], {
-        autoAlpha: 0,
-        y: -20,
-        stagger: 0.05,
+      [...firstList.children, ...secondList.children].map(child => {
+        gsap.from(child, {
+          autoAlpha: 0,
+          y: -20,
+          scrollTrigger: {
+            trigger: child,
+            start: 'top bottom-=50px',
+          },
+        });
       });
     }
   }, []);
@@ -149,11 +139,11 @@ const Technologies = () => {
         <Main>
           <InnerWrapper>
             <StyledInnerWrapper ref={headerRef}>
-              <Heading isActive={isLineActive}>Technologies</Heading>
-              <Paragraph>
-                These are technologies, tools and concepts I use in my projects.
-                I'm currently improving myself in TypeScript and unit testing.
-              </Paragraph>
+              <SectionHeader
+                isLineActive={isLineActive}
+                title="Technologies"
+                paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
+              />
             </StyledInnerWrapper>
             <ListsWrapper>
               <StyledList ref={list1Ref}>
@@ -185,7 +175,7 @@ const Technologies = () => {
             </ListsWrapper>
           </InnerWrapper>
           <AnimationWrapper>
-            <LandingImage />
+            <HeroAnimation />
           </AnimationWrapper>
         </Main>
       </Content>
