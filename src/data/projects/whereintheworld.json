@@ -1,0 +1,38 @@
+{
+    "order": 4,
+    "title": "Where in the world?",
+    "description": "The app made with Gatsby. It uses restcountries.eu API to get informations about any country in the world.",
+    "image": "../../assets/images/whereintheworld-project.png",
+    "codeLink": "",
+    "demoLink": "",
+    "technologies": [
+        {
+            "name": "Gatsby",
+            "icon": "../../assets/icons/gatsby.svg"
+        },
+        {
+            "name": "React & Hooks",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "Jest",
+            "icon": "../../assets/icons/jest.svg"
+        },
+        {
+            "name": "React Testing Library",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "GraphQL",
+            "icon": "../../assets/icons/graphql.svg"
+        },
+        {
+            "name": "Styled Components",
+            "icon": "../../assets/icons/styled-components.svg"
+        },
+        {
+            "name": "Local storage",
+            "icon": "../../assets/icons/storage.svg"
+        }
+    ]
+}

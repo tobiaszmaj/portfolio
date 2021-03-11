@@ -80,7 +80,7 @@ const Links = ({ big }: Props) => {
   return (
     <>
       <ListItem big={big || false} isActive={activeLink === 'home'}>
-        <StyledLink to="#home">Home</StyledLink>
+        <StyledLink to="/">Home</StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'technologies'}>
         <StyledLink to="#technologies">Technologies</StyledLink>

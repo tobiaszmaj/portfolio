@@ -1,0 +1,30 @@
+{
+    "order": 5,
+    "title": "Rock, Paper, Scissors",
+    "description": "Rock, Paper, Scissors game made with Gatsby. It has two modes - normal and advanced, in which there are two additional options.",
+    "image": "../../assets/images/rps-project.png",
+    "codeLink": "",
+    "demoLink": "",
+    "technologies": [
+        {
+            "name": "Gatsby",
+            "icon": "../../assets/icons/gatsby.svg"
+        },
+        {
+            "name": "React & Hooks",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "Framer Motion",
+            "icon": "../../assets/icons/framer-motion.svg"
+        },
+        {
+            "name": "Styled Components",
+            "icon": "../../assets/icons/styled-components.svg"
+        },
+        {
+            "name": "Local storage",
+            "icon": "../../assets/icons/storage.svg"
+        }
+    ]
+}

@@ -29,6 +29,13 @@ module.exports = {
         path: `${__dirname}/src/assets`,
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

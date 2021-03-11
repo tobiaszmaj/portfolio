@@ -1,0 +1,46 @@
+{
+    "order": 2,
+    "title": "FavNote",
+    "description": "The react app, which allows you to save notes, twitter accounts, or articles. It is based on \"Adam Romański\" course, extended with RWD, form validation - also server side, possibility to create own account, animations and more.",
+    "image": "../../assets/images/favnote-project.png",
+    "codeLink": "",
+    "demoLink": "",
+    "technologies": [
+        {
+            "name": "React",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "Redux",
+            "icon": "../../assets/icons/redux.svg"
+        },
+        {
+            "name": "Strapi",
+            "icon": "../../assets/icons/strapi.svg"
+        },
+        {
+            "name": "Framer Motion",
+            "icon": "../../assets/icons/framer-motion.svg"
+        },
+        {
+            "name": "Styled Components",
+            "icon": "../../assets/icons/styled-components.svg"
+        },
+        {
+            "name": "Formik",
+            "icon": "../../assets/icons/formik.svg"
+        },
+        {
+            "name": "Storybook",
+            "icon": "../../assets/icons/storybook.svg"
+        },
+        {
+            "name": "React Moment",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "Local storage",
+            "icon": "../../assets/icons/storage.svg"
+        }
+    ]
+}

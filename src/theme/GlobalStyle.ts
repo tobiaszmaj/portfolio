@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.white};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
+    overflow-x: hidden;
   }
 `;
 

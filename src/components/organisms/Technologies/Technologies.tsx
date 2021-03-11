@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
+import Anchor from 'components/atoms/Anchor/Anchor';
 import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
 import HeroAnimation from 'components/molecules/HeroAnimation/HeroAnimation';
 import checkmarkIcon from 'assets/icons/checkmark.svg';
@@ -124,49 +125,52 @@ const Technologies = () => {
   }, []);
 
   return (
-    <Wrapper id="technologies">
-      <Content>
-        <Main>
-          <InnerWrapper>
-            <SectionHeader
-              title="Technologies"
-              paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
-            />
-            <ListsWrapper>
-              <StyledList ref={list1Ref}>
-                <ListItem>HTML5</ListItem>
-                <ListItem>CSS3</ListItem>
-                <ListItem>Sass/SCSS</ListItem>
-                <ListItem>BEM</ListItem>
-                <ListItem>Mobile First</ListItem>
-                <ListItem>JavaScript ES6+</ListItem>
-                <ListItem>TypeScript</ListItem>
-                <ListItem>React & Hooks</ListItem>
-                <ListItem>Redux</ListItem>
-                <ListItem>Gatsby</ListItem>
-                <ListItem>GraphQL</ListItem>
-              </StyledList>
-              <List ref={list2Ref}>
-                <ListItem>Jest</ListItem>
-                <ListItem>React Testing Library</ListItem>
-                <ListItem>GSAP</ListItem>
-                <ListItem>Framer Motion</ListItem>
-                <ListItem>CSS Modules</ListItem>
-                <ListItem>Styled Components</ListItem>
-                <ListItem>Storybook</ListItem>
-                <ListItem>Formik & Yup</ListItem>
-                <ListItem>Atomic design</ListItem>
-                <ListItem>Axios</ListItem>
-                <ListItem>Git</ListItem>
-              </List>
-            </ListsWrapper>
-          </InnerWrapper>
-          <AnimationWrapper>
-            <HeroAnimation />
-          </AnimationWrapper>
-        </Main>
-      </Content>
-    </Wrapper>
+    <>
+      <Anchor id="technologies" />
+      <Wrapper id="technologies-content">
+        <Content>
+          <Main>
+            <InnerWrapper>
+              <SectionHeader
+                title="Technologies"
+                paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
+              />
+              <ListsWrapper>
+                <StyledList ref={list1Ref}>
+                  <ListItem>HTML5</ListItem>
+                  <ListItem>CSS3</ListItem>
+                  <ListItem>Sass/SCSS</ListItem>
+                  <ListItem>BEM</ListItem>
+                  <ListItem>Mobile First</ListItem>
+                  <ListItem>JavaScript ES6+</ListItem>
+                  <ListItem>TypeScript</ListItem>
+                  <ListItem>React & Hooks</ListItem>
+                  <ListItem>Redux</ListItem>
+                  <ListItem>Gatsby</ListItem>
+                  <ListItem>GraphQL</ListItem>
+                </StyledList>
+                <List ref={list2Ref}>
+                  <ListItem>Jest</ListItem>
+                  <ListItem>React Testing Library</ListItem>
+                  <ListItem>GSAP</ListItem>
+                  <ListItem>Framer Motion</ListItem>
+                  <ListItem>CSS Modules</ListItem>
+                  <ListItem>Styled Components</ListItem>
+                  <ListItem>Storybook</ListItem>
+                  <ListItem>Formik & Yup</ListItem>
+                  <ListItem>Atomic design</ListItem>
+                  <ListItem>Axios</ListItem>
+                  <ListItem>Git</ListItem>
+                </List>
+              </ListsWrapper>
+            </InnerWrapper>
+            <AnimationWrapper>
+              <HeroAnimation />
+            </AnimationWrapper>
+          </Main>
+        </Content>
+      </Wrapper>
+    </>
   );
 };
 

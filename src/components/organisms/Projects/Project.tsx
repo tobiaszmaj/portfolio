@@ -1,43 +1,53 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import Image, { FluidObject } from 'gatsby-image';
 import gsap from 'gsap';
 import Button from 'components/atoms/Button/Button';
-import image from 'assets/images/ecommerce-project.png';
-import icon from 'assets/icons/react.svg';
 
 interface ContentProps {
-    readonly right?: boolean;
+  readonly right?: boolean;
+}
+
+interface IconProps {
+  readonly icon: string;
 }
 
 interface Props {
-    right?: boolean;
+  title: string;
+  description: string;
+  demoLink: string;
+  codeLink: string;
+  technologies: {
+    name: string;
+    icon: {
+      publicURL: string;
+    };
+  }[];
+  image: FluidObject;
+  right: boolean;
 }
 
 const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.s} {
+    padding-bottom: 80px;
+  }
+  ${({ theme }) => theme.mq.lg} {
     flex-direction: row;
     align-items: center;
     padding-bottom: 150px;
   }
 `;
 
-const Image = styled.div`
-  width: 100%;
-  height: 100%;
-  background: url(${image});
-  background-size: cover;
-  background-position: top;
+const StyledImage = styled(Image)`
   transition: 5s;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 350px;
   ${({ theme }) => theme.mq.s} {
-    height: 600px;
     z-index: 1;
     &:before {
       content: '';
@@ -51,7 +61,7 @@ const ImageWrapper = styled.div`
       z-index: -1;
     }
   }
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.lg} {
     flex-basis: 65%;
   }
 `;
@@ -62,7 +72,7 @@ const ImageInnerWrapper = styled.div`
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05), 0 5px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border-radius: 8px;
-  &:hover > ${Image} {
+  &:hover > ${StyledImage} {
     /* background-position: bottom; */
   }
 `;
@@ -71,12 +81,12 @@ const Content = styled.div<ContentProps>`
   display: flex;
   flex-direction: column;
   padding: 40px 0;
-  ${({ theme }) => theme.mq.md} {
+  ${({ theme }) => theme.mq.lg} {
     order: ${({ right }) => (right ? '-1' : '1')};
     padding: ${({ right }) => (right ? '0 50px 0 0' : '0 0 0 50px')};
   }
   ${({ theme }) => theme.mq.xl} {
-    padding: ${({ right }) => (right ? '0 100px 0 0' : '0 0 0 100px')};
+    padding: ${({ right }) => (right ? '0 100px 0 0' : '0 0 0 80px')};
   }
 `;
 
@@ -96,8 +106,8 @@ const Description = styled.p`
     font-size: ${({ theme }) => theme.fontSize.m};
     margin: 25px 0 10px;
   }
-  ${({ theme }) => theme.mq.md} {
-    max-width: 400px;
+  ${({ theme }) => theme.mq.lg} {
+    max-width: 620px;
   }
 `;
 
@@ -127,9 +137,6 @@ const LinkWrapper = styled.div`
       background: ${({ theme }) => theme.dark200};
       color: ${({ theme }) => theme.white};
     }
-    ${({ theme }) => theme.mq.md} {
-      width: 140px;
-    }
     ${({ theme }) => theme.mq.lg} {
       width: 180px;
     }
@@ -138,23 +145,28 @@ const LinkWrapper = styled.div`
 
 const Technologies = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 360px;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0 10px;
   padding: 20px 0;
+  max-width: 620px;
+  ${({ theme }) => theme.mq.s} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
-const Technology = styled.div`
+const Technology = styled.div<IconProps>`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.dark200};
   font-size: ${({ theme }) => theme.fontSize.m};
-  margin: 6px 0;
+  margin: 7px 0;
+  white-space: pre;
   &:before {
     content: '';
     margin-right: 8px;
-    width: 26px;
+    width: 22px;
     height: 26px;
-    background: url(${icon}) no-repeat center;
+    background: url(${({ icon }) => icon}) no-repeat center;
     background-size: 100%;
   }
   ${({ theme }) => theme.mq.s} {
@@ -162,73 +174,76 @@ const Technology = styled.div`
   }
 `;
 
-const Project = ({ right }: Props) => {
-    const imageRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
+const Project = ({
+  image,
+  title,
+  description,
+  technologies,
+  right,
+  demoLink,
+  codeLink,
+}: Props) => {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  console.log(technologies);
+  useEffect(() => {
+    const image = imageRef.current;
+    const content = contentRef.current;
 
-    useEffect(() => {
-        const image = imageRef.current;
-        const content = contentRef.current;
+    if (content && image) {
+      gsap.from(image, {
+        autoAlpha: 0,
+        x: right ? -150 : 150,
+        scrollTrigger: {
+          trigger: image,
+          start: 'top bottom-=200px',
+        },
+      });
+      gsap.from(content.children, {
+        autoAlpha: 0,
+        y: -50,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: content,
+          start: 'top bottom-=200px',
+        },
+      });
+    }
+  }, []);
 
-        if (content && image) {
-            gsap.from(image, {
-                autoAlpha: 0,
-                x: right ? -150 : 150,
-                scrollTrigger: {
-                    trigger: image,
-                    start: 'top bottom-=150px',
-                },
-            });
-            gsap.from(content.children, {
-                autoAlpha: 0,
-                y: -50,
-                duration: 0.5,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: content,
-                    start: 'top bottom-=150px',
-                },
-            });
-        }
-    }, []);
-
-    return (
-        <Wrapper>
-            <ImageWrapper>
-                <ImageInnerWrapper ref={imageRef}>
-                    <Image />
-                </ImageInnerWrapper>
-            </ImageWrapper>
-            <Content right={right} ref={contentRef}>
-                <Title>Project 1</Title>
-                <Description>
-                    E-Commerce project made with React for self learning.
-        </Description>
-                <Technologies>
-                    <Technology>Typescript</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                    <Technology>React</Technology>
-                </Technologies>
-                <ButtonsWrapper>
-                    <LinkWrapper>
-                        <Button as="a" href="/" target="_blanket">
-                            Live Demo
+  return (
+    <Wrapper>
+      <ImageWrapper>
+        <ImageInnerWrapper ref={imageRef}>
+          <StyledImage fluid={image} alt={title} />
+        </ImageInnerWrapper>
+      </ImageWrapper>
+      <Content right={right} ref={contentRef}>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Technologies>
+          {technologies.map(({ icon, name }) => (
+            <Technology key={name} icon={icon.publicURL}>
+              {name}
+            </Technology>
+          ))}
+        </Technologies>
+        <ButtonsWrapper>
+          <LinkWrapper>
+            <Button as="a" href={demoLink} target="_blanket">
+              Live Demo
             </Button>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                        <Button as="a" href="/" target="_blanket" secondary>
-                            View Code
+          </LinkWrapper>
+          <LinkWrapper>
+            <Button as="a" href={codeLink} target="_blanket" secondary>
+              View Code
             </Button>
-                    </LinkWrapper>
-                </ButtonsWrapper>
-            </Content>
-        </Wrapper>
-    );
+          </LinkWrapper>
+        </ButtonsWrapper>
+      </Content>
+    </Wrapper>
+  );
 };
 
 export default Project;
