@@ -42,7 +42,7 @@ const Wrapper = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${({ theme }) => theme.darkGradient};
+    background: ${({ theme }) => theme.dark100};
     clip-path: polygon(100% calc(100% - 50px), 0% 100%, 100% 100%);
     ${({ theme }) => theme.mq.md} {
       clip-path: polygon(100% calc(100% - 110px), 0% 100%, 100% 100%);
@@ -92,7 +92,7 @@ const Projects = () => {
           <SectionHeader
             lineColor="dark"
             title="My Projects"
-            paragraph="I've been bla bla. Below are some of my favourites. "
+            paragraph="All of my projects are on GitHub. Most of them are made with React. Below are some of my favorites. Currently I'm keep learning TypeScript and my favorite - Gatsby."
           />
           <InnerWrapper>
             {allProjectsJson.nodes.map(

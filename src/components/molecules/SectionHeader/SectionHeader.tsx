@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
+import { NavigationContext } from 'contexts/NavigationContext';
 
 interface Props {
   title: string;
@@ -62,7 +63,7 @@ const Paragraph = styled.p`
 `;
 
 const SectionHeader = ({ lineColor, title, paragraph }: Props) => {
-  const [isLineActive, setIsLineActive] = useState(false);
+  const { activeLink } = useContext(NavigationContext);
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -73,7 +74,6 @@ const SectionHeader = ({ lineColor, title, paragraph }: Props) => {
         gsap.from(child, {
           autoAlpha: 0,
           x: -30,
-          onComplete: () => setIsLineActive(true),
           scrollTrigger: {
             trigger: child,
             start: 'top bottom-=50px',
@@ -85,7 +85,10 @@ const SectionHeader = ({ lineColor, title, paragraph }: Props) => {
 
   return (
     <Wrapper ref={headerRef}>
-      <Heading lineColor={lineColor} isActive={isLineActive}>
+      <Heading
+        lineColor={lineColor}
+        isActive={title.toLowerCase().includes(activeLink)}
+      >
         {title}
       </Heading>
       <Paragraph>{paragraph}</Paragraph>

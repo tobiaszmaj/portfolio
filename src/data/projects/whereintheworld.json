@@ -19,6 +19,10 @@
             "icon": "../../assets/icons/jest.svg"
         },
         {
+            "name": "Framer Motion",
+            "icon": "../../assets/icons/framer-motion.svg"
+        },
+        {
             "name": "React Testing Library",
             "icon": "../../assets/icons/react.svg"
         },

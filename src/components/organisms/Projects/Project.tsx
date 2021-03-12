@@ -69,6 +69,7 @@ const ImageWrapper = styled.div`
 const ImageInnerWrapper = styled.div`
   width: 100%;
   height: 100%;
+  will-change: transform;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05), 0 5px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border-radius: 8px;
@@ -185,7 +186,7 @@ const Project = ({
 }: Props) => {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  console.log(technologies);
+
   useEffect(() => {
     const image = imageRef.current;
     const content = contentRef.current;
@@ -205,7 +206,7 @@ const Project = ({
         duration: 0.5,
         stagger: 0.1,
         scrollTrigger: {
-          trigger: content,
+          trigger: image,
           start: 'top bottom-=200px',
         },
       });

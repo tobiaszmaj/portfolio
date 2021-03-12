@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import gsap from 'gsap';
+import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import { NavigationContext } from 'contexts/NavigationContext';
 import Content from 'components/atoms/Content/Content';
@@ -30,6 +31,11 @@ const Wrapper = styled.nav<Props>`
         background-color: ${({ theme }) => theme.dark100};
       `}
   }
+`;
+
+const LogoWrapper = styled(Link)`
+  display: block;
+  text-decoration: none;
 `;
 
 const InnerWrapper = styled.div`
@@ -77,7 +83,9 @@ const Navigation = () => {
         <Wrapper isActive={!isTransparent}>
             <Content>
                 <InnerWrapper>
-                    <Logo />
+                    <LogoWrapper to="/">
+                        <Logo />
+                    </LogoWrapper>
                     <List ref={listRef}>
                         <Links />
                     </List>

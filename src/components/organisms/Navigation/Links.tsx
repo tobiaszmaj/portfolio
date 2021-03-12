@@ -53,7 +53,7 @@ const ListItem = styled.li<ItemProps>`
       }
       &:after {
         transform: ${isActive ? 'scaleX(1)' : 'scaleX(0.3)'};
-        bottom: -10px;
+        bottom: -15px;
         width: 100px;
         height: 4px;
         border-radius: 100px;

@@ -14,8 +14,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button, button:focus, input:focus, textarea:focus, select:focus {
-    padding: 0;
-    margin: 0;
     outline: 0 !important;
   }
   
@@ -29,6 +27,10 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     font-size: 62.5%;
+  }
+
+  b {
+    font-weight: ${({ theme }) => theme.medium}
   }
 
   body {

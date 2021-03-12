@@ -3,6 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 interface Props {
   readonly secondary?: boolean | string;
   readonly animated?: boolean | string;
+  readonly submit?: boolean | string;
 }
 
 const pulse = keyframes`
@@ -24,7 +25,7 @@ const Button = styled.button<Props>`
   border: 2px solid ${({ theme }) => theme.blue};
   background: ${({ theme }) => theme.blue};
   color: ${({ theme }) => theme.dark};
-  transition: 0.3s;
+  transition: 0.3s all;
   border-radius: 50px;
   text-decoration: none;
   cursor: pointer;
@@ -38,6 +39,20 @@ const Button = styled.button<Props>`
     css`
       background: transparent;
       color: ${({ theme }) => theme.blue} !important;
+    `}
+    ${({ submit }) =>
+    submit &&
+    css`
+      border-color: ${({ theme }) => theme.blue};
+      background: ${({ theme }) => theme.blue};
+      color: ${({ theme }) => theme.white};
+      font-size: ${({ theme }) => theme.fontSize.m};
+      &:hover {
+        border-color: ${({ theme }) => theme.blue100};
+        color: ${({ theme }) => theme.white};
+        background: transparent;
+        background-size: 150%;
+      }
     `}
   ${({ animated }) =>
     animated &&

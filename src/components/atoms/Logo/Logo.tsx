@@ -1,22 +1,20 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import logoImg from 'assets/images/logo.png';
 
 interface Props {
-    isWhite?: boolean;
+  isWhite?: boolean;
 }
 
 interface ImgProps {
-    readonly isWhite: boolean;
+  readonly isWhite: boolean;
 }
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.white};
   text-decoration: none;
-  z-index: -1;
 `;
 
 const InnerWrapper = styled.div`
@@ -46,16 +44,16 @@ const Title = styled.h3`
 `;
 
 const Logo = ({ isWhite }: Props) => (
-    <Wrapper to="/">
-        <InnerWrapper>
-            <Img isWhite={isWhite || false} src={logoImg} alt="logo" />
-        </InnerWrapper>
-        <Title>
-            Tobiasz
+  <Wrapper>
+    <InnerWrapper>
+      <Img isWhite={isWhite || false} src={logoImg} alt="logo" />
+    </InnerWrapper>
+    <Title>
+      Tobiasz
       <br />
       Maj
     </Title>
-    </Wrapper>
+  </Wrapper>
 );
 
 export default Logo;

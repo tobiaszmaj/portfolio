@@ -45,22 +45,29 @@ const NavigationProvider = ({ children }: Props) => {
         ScrollTrigger.create({
             trigger: '#home',
             start: 'top center',
-            end: '+=500',
+            end: 'bottom 90%',
             onToggle: ({ isActive }) => isActive && setActiveLink('home'),
         });
 
         ScrollTrigger.create({
             trigger: '#technologies-content',
             start: 'top center',
-            end: '+=500',
+            end: 'bottom bottom',
             onToggle: ({ isActive }) => isActive && setActiveLink('technologies'),
         });
 
         ScrollTrigger.create({
             trigger: '#projects-content',
             start: 'top center',
-            end: '+=500',
+            end: 'bottom bottom',
             onToggle: ({ isActive }) => isActive && setActiveLink('projects'),
+        });
+
+        ScrollTrigger.create({
+            trigger: '#contact-content',
+            start: 'top center',
+            end: 'bottom bottom',
+            onToggle: ({ isActive }) => isActive && setActiveLink('contact'),
         });
     }, []);
 
