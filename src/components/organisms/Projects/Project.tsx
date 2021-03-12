@@ -40,9 +40,7 @@ const Wrapper = styled.article`
   }
 `;
 
-const StyledImage = styled(Image)`
-  transition: 5s;
-`;
+const StyledImage = styled(Image)``;
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -69,19 +67,17 @@ const ImageWrapper = styled.div`
 const ImageInnerWrapper = styled.div`
   width: 100%;
   height: 100%;
-  will-change: transform;
+  transition-property: transform, opacity;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05), 0 5px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border-radius: 8px;
-  &:hover > ${StyledImage} {
-    /* background-position: bottom; */
-  }
 `;
 
 const Content = styled.div<ContentProps>`
   display: flex;
   flex-direction: column;
   padding: 40px 0;
+  transition-property: opacity;
   ${({ theme }) => theme.mq.lg} {
     order: ${({ right }) => (right ? '-1' : '1')};
     padding: ${({ right }) => (right ? '0 50px 0 0' : '0 0 0 50px')};
@@ -93,6 +89,7 @@ const Content = styled.div<ContentProps>`
 
 const Title = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.xxlm};
+  transition-property: transform, opacity;
   ${({ theme }) => theme.mq.s} {
     font-size: ${({ theme }) => theme.fontSize.xxl};
   }
@@ -101,6 +98,7 @@ const Title = styled.h3`
 const Description = styled.p`
   font-weight: ${({ theme }) => theme.light};
   font-size: ${({ theme }) => theme.fontSize.s};
+  transition-property: transform, opacity;
   margin: 20px 0 0;
   line-height: 22px;
   ${({ theme }) => theme.mq.s} {
@@ -116,6 +114,7 @@ const ButtonsWrapper = styled.div`
   margin: 10px 0;
   display: flex;
   flex-direction: column;
+  transition-property: transform, opacity;
   ${({ theme }) => theme.mq.s} {
     flex-direction: row;
   }
@@ -150,6 +149,7 @@ const Technologies = styled.div`
   gap: 0 10px;
   padding: 20px 0;
   max-width: 620px;
+  transition-property: transform, opacity;
   ${({ theme }) => theme.mq.s} {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -194,7 +194,7 @@ const Project = ({
     if (content && image) {
       gsap.from(image, {
         autoAlpha: 0,
-        x: right ? -150 : 150,
+        x: right ? '-=150' : '+=150',
         scrollTrigger: {
           trigger: image,
           start: 'top bottom-=200px',
@@ -202,7 +202,7 @@ const Project = ({
       });
       gsap.from(content.children, {
         autoAlpha: 0,
-        y: -50,
+        y: '-=50',
         duration: 0.5,
         stagger: 0.1,
         scrollTrigger: {

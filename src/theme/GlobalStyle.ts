@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     font-size: 62.5%;
+    scrollbar-width: thin;
+    scrollbar-color: ${({ theme }) => theme.blue100};
   }
 
   b {
@@ -35,10 +37,22 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     color: ${({ theme }) => theme.dark};
-    background: ${({ theme }) => theme.white};
+    background: ${({ theme }) => theme.dark150};
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-size: 1.6rem;
     overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: ${({ theme }) => theme.dark200};
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.blue100};
+      border-radius: .5rem;
+      background: ${({ theme }) => theme.blueGradient};
+      border: 1px solid ${({ theme }) => theme.dark200};
+    }
   }
 `;
 

@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
 import Button from 'components/atoms/Button/Button';
+import Anchor from 'components/atoms/Anchor/Anchor';
 import Title from 'assets/icons/title.inline.svg';
 
 interface Props {
@@ -60,7 +61,7 @@ const Links = styled.div`
 
 const LinkWrapper = styled.div`
 margin: 10px 0;
-  opacity: 0;
+visibility: hidden;
   ${({ theme }) => theme.mq.s} {
     margin: 0 20px;
   }
@@ -73,7 +74,6 @@ width: 320px;
     width: 750px;
     height: auto;
   }
-  opacity: 0;
 `;
 
 const SubTitle = styled.h2`
@@ -84,7 +84,7 @@ const SubTitle = styled.h2`
   font-weight: ${({ theme }) => theme.regular};
   padding: 5px 0;
   margin-bottom: -40px;
-  opacity: 0;
+  visibility: hidden;
   ${({ theme }) => theme.mq.md} {
     font-size: ${({ theme }) => theme.fontSize.xl};
     margin-bottom: -25px;
@@ -132,11 +132,13 @@ const Header = () => {
       const links = linksWrapper.children;
       const letters = [...title.querySelectorAll('.letter')];
       const outlines = letters.map(({ children }) => children[0]);
+
+      gsap.set(links, { autoAlpha: 0 });
+
       const tl = gsap.timeline({
         defaults: { ease: 'Power3.easeOut' },
       });
 
-      tl.to(title, { duration: 0.5, autoAlpha: 1 });
       tl.addLabel('start');
       tl.to(
         outlines,
@@ -153,15 +155,14 @@ const Header = () => {
         },
         'start'
       );
-      tl.fromTo(
+      tl.from(
         subTitle,
-        { autoAlpha: 0, y: 50 },
-        { duration: 1, y: 0, autoAlpha: 1, delay: 2.5 },
+        { autoAlpha: 0, y: '+=50', delay: 2.5, duration: 1 },
         'start'
       );
       tl.fromTo(
         links,
-        { autoAlpha: 0, y: -50 },
+        { autoAlpha: 0, y: '-=50' },
         {
           autoAlpha: 1,
           y: 0,
@@ -174,31 +175,39 @@ const Header = () => {
   }, []);
 
   return (
-    <Wrapper id="home">
-      <Content>
-        <InnerWrapper>
-          <SubTitle ref={subTitleRef}>
-            <Intro>Hey, I'm a </Intro>
-            <Name isActive={isLineActive}>Front End Developer</Name>
-          </SubTitle>
-          <TitleWrapper ref={titleRef}>
-            <Title />
-          </TitleWrapper>
-          <Links ref={linksRef}>
-            <LinkWrapper>
-              <Button as={Link} to="#projects">
-                Projects
-              </Button>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Button secondary="true" animated="true" as={Link} to="#contact">
-                Contact me
-              </Button>
-            </LinkWrapper>
-          </Links>
-        </InnerWrapper>
-      </Content>
-    </Wrapper>
+    <>
+      <Anchor name="home" />
+      <Wrapper>
+        <Content>
+          <InnerWrapper>
+            <SubTitle ref={subTitleRef}>
+              <Intro>Hey, I'm a </Intro>
+              <Name isActive={isLineActive}>Front End Developer</Name>
+            </SubTitle>
+            <TitleWrapper ref={titleRef}>
+              <Title />
+            </TitleWrapper>
+            <Links ref={linksRef}>
+              <LinkWrapper>
+                <Button as={Link} to="#projects">
+                  Projects
+                </Button>
+              </LinkWrapper>
+              <LinkWrapper>
+                <Button
+                  secondary="true"
+                  animated="true"
+                  as={Link}
+                  to="#contact"
+                >
+                  Contact me
+                </Button>
+              </LinkWrapper>
+            </Links>
+          </InnerWrapper>
+        </Content>
+      </Wrapper>
+    </>
   );
 };
 

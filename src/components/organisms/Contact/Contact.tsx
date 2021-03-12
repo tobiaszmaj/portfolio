@@ -63,31 +63,31 @@ const FormWrapper = styled.div`
 `;
 
 const Contact = () => {
-    return (
-        <>
-            <Anchor id="contact" />
-            <Wrapper id="contact-content">
-                <Content>
-                    <SectionHeader
-                        title="Contact"
-                        paragraph="Do you have any questions or job offer? Feel free to contact me!"
-                    />
-                    <InnerContent>
-                        <InnerWrapper>
-                            <StatusWrapper>
-                                <Title>Status</Title>
-                                <Status>Open for job offers</Status>
-                            </StatusWrapper>
-                            <ContactLinks />
-                        </InnerWrapper>
-                        <FormWrapper>
-                            <Form />
-                        </FormWrapper>
-                    </InnerContent>
-                </Content>
-            </Wrapper>
-        </>
-    );
+  return (
+    <>
+      <Anchor name="contact" />
+      <Wrapper id="contact-content">
+        <Content>
+          <SectionHeader
+            title="Contact"
+            paragraph="Do you have any questions or job offer? Feel free to contact me!"
+          />
+          <InnerContent>
+            <InnerWrapper>
+              <StatusWrapper>
+                <Title>Status</Title>
+                <Status>Open for job offers</Status>
+              </StatusWrapper>
+              <ContactLinks />
+            </InnerWrapper>
+            <FormWrapper>
+              <Form />
+            </FormWrapper>
+          </InnerContent>
+        </Content>
+      </Wrapper>
+    </>
+  );
 };
 
 export default Contact;

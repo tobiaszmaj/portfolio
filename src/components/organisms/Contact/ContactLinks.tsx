@@ -90,8 +90,7 @@ const ContactLinks = () => (
             <InnerWrapper>
                 <LinkName>GitHub</LinkName>
                 <LinkDescription>
-                    Would you like to see my code? Take look at all my GitHub
-                    repositories!
+                    Would you like to see my code? Take a look at my GitHub repositories!
         </LinkDescription>
             </InnerWrapper>
         </LinkItem>

@@ -73,7 +73,7 @@ const SectionHeader = ({ lineColor, title, paragraph }: Props) => {
       [...header.children].map(child => {
         gsap.from(child, {
           autoAlpha: 0,
-          x: -30,
+          x: '-=30',
           scrollTrigger: {
             trigger: child,
             start: 'top bottom-=50px',

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import { NavigationContext } from 'contexts/NavigationContext';
+import { Link } from 'react-scroll';
 
 interface Props {
   big?: boolean;
@@ -72,6 +72,7 @@ const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
   transition: 0.3s;
+  cursor: pointer;
 `;
 
 const Links = ({ big }: Props) => {
@@ -80,16 +81,24 @@ const Links = ({ big }: Props) => {
   return (
     <>
       <ListItem big={big || false} isActive={activeLink === 'home'}>
-        <StyledLink to="/">Home</StyledLink>
+        <StyledLink duration={1000} smooth to="home">
+          Home
+        </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'technologies'}>
-        <StyledLink to="#technologies">Technologies</StyledLink>
+        <StyledLink duration={1000} smooth to="technologies">
+          Technologies
+        </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'projects'}>
-        <StyledLink to="#projects">Projects</StyledLink>
+        <StyledLink duration={1000} smooth to="projects">
+          Projects
+        </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'contact'}>
-        <StyledLink to="#contact">Contact</StyledLink>
+        <StyledLink duration={1000} smooth to="contact">
+          Contact
+        </StyledLink>
       </ListItem>
     </>
   );

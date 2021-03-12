@@ -41,7 +41,7 @@ const Wrapper = styled.section`
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -1px;
     background: ${({ theme }) => theme.dark100};
     clip-path: polygon(100% calc(100% - 50px), 0% 100%, 100% 100%);
     ${({ theme }) => theme.mq.md} {
@@ -86,7 +86,7 @@ const Projects = () => {
 
   return (
     <>
-      <Anchor id="projects" />
+      <Anchor name="projects" />
       <Wrapper id="projects-content">
         <Content>
           <SectionHeader

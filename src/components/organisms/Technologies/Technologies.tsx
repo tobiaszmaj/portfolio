@@ -114,7 +114,7 @@ const Technologies = () => {
       [...firstList.children, ...secondList.children].map(child => {
         gsap.from(child, {
           autoAlpha: 0,
-          y: -20,
+          y: '-=20',
           scrollTrigger: {
             trigger: child,
             start: 'top bottom-=50px',
@@ -126,7 +126,7 @@ const Technologies = () => {
 
   return (
     <>
-      <Anchor id="technologies" />
+      <Anchor name="technologies" />
       <Wrapper id="technologies-content">
         <Content>
           <Main>
