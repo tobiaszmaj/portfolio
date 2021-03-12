@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { NavigationContext } from 'contexts/NavigationContext';
 import { Link } from 'react-scroll';
+import useMedia from 'hooks/useMedia';
 
 interface Props {
   big?: boolean;
@@ -77,6 +78,7 @@ const StyledLink = styled(Link)`
 
 const Links = ({ big }: Props) => {
   const { activeLink } = useContext(NavigationContext);
+  const matches = useMedia('(min-width: 800px)');
 
   return (
     <>
@@ -86,17 +88,32 @@ const Links = ({ big }: Props) => {
         </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'technologies'}>
-        <StyledLink duration={1000} smooth to="technologies">
+        <StyledLink
+          duration={1000}
+          offset={matches ? -130 : -50}
+          smooth
+          to="technologies"
+        >
           Technologies
         </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'projects'}>
-        <StyledLink duration={1000} smooth to="projects">
+        <StyledLink
+          duration={1000}
+          offset={matches ? -130 : -50}
+          smooth
+          to="projects"
+        >
           Projects
         </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'contact'}>
-        <StyledLink duration={1000} smooth to="contact">
+        <StyledLink
+          duration={1200}
+          offset={matches ? -130 : -50}
+          smooth
+          to="contact"
+        >
           Contact
         </StyledLink>
       </ListItem>

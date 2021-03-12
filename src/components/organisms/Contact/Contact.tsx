@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
-import Anchor from 'components/atoms/Anchor/Anchor';
+import { Element } from 'react-scroll';
 import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
 import Form from 'components/molecules/Form/Form';
 import ContactLinks from 'components/organisms/Contact/ContactLinks';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   position: relative;
   padding: 50px 0 20px;
   background: ${({ theme }) => theme.dark100};
@@ -64,9 +64,8 @@ const FormWrapper = styled.div`
 
 const Contact = () => {
   return (
-    <>
-      <Anchor name="contact" />
-      <Wrapper id="contact-content">
+    <Wrapper id="contact">
+      <Element name="contact">
         <Content>
           <SectionHeader
             title="Contact"
@@ -85,8 +84,8 @@ const Contact = () => {
             </FormWrapper>
           </InnerContent>
         </Content>
-      </Wrapper>
-    </>
+      </Element>
+    </Wrapper>
   );
 };
 

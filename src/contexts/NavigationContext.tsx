@@ -43,31 +43,21 @@ const NavigationProvider = ({ children }: Props) => {
         });
 
         ScrollTrigger.create({
-            trigger: '#home',
+            trigger: 'header',
             start: 'top center',
             end: 'bottom 90%',
             onToggle: ({ isActive }) => isActive && setActiveLink('home'),
         });
 
-        ScrollTrigger.create({
-            trigger: '#technologies-content',
-            start: 'top center',
-            end: 'bottom bottom',
-            onToggle: ({ isActive }) => isActive && setActiveLink('technologies'),
-        });
+        const sections = document.querySelectorAll('section');
 
-        ScrollTrigger.create({
-            trigger: '#projects-content',
-            start: 'top center',
-            end: 'bottom bottom',
-            onToggle: ({ isActive }) => isActive && setActiveLink('projects'),
-        });
-
-        ScrollTrigger.create({
-            trigger: '#contact-content',
-            start: 'top center',
-            end: 'bottom bottom',
-            onToggle: ({ isActive }) => isActive && setActiveLink('contact'),
+        sections.forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top center',
+                end: 'bottom bottom',
+                onToggle: ({ isActive }) => isActive && setActiveLink(section.id),
+            });
         });
     }, []);
 

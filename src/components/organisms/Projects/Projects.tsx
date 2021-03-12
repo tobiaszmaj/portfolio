@@ -2,8 +2,8 @@ import React from 'react';
 import { FluidObject } from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import { Element } from 'react-scroll';
 import Content from 'components/atoms/Content/Content';
-import Anchor from 'components/atoms/Anchor/Anchor';
 import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
 import Project from 'components/organisms/Projects/Project';
 
@@ -85,9 +85,8 @@ const Projects = () => {
 `);
 
   return (
-    <>
-      <Anchor name="projects" />
-      <Wrapper id="projects-content">
+    <Wrapper id="projects">
+      <Element name="projects">
         <Content>
           <SectionHeader
             lineColor="dark"
@@ -114,8 +113,8 @@ const Projects = () => {
             )}
           </InnerWrapper>
         </Content>
-      </Wrapper>
-    </>
+      </Element>
+    </Wrapper>
   );
 };
 

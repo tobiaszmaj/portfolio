@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Link } from 'gatsby';
+import { Link, Element } from 'react-scroll';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
 import Button from 'components/atoms/Button/Button';
-import Anchor from 'components/atoms/Anchor/Anchor';
 import Title from 'assets/icons/title.inline.svg';
+import useMedia from 'hooks/useMedia';
 
 interface Props {
   readonly isActive: boolean;
@@ -122,6 +122,7 @@ const Header = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subTitleRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const matches = useMedia('(min-width: 800px)');
 
   useEffect(() => {
     const title = titleRef.current;
@@ -175,8 +176,7 @@ const Header = () => {
   }, []);
 
   return (
-    <>
-      <Anchor name="home" />
+    <Element name="home">
       <Wrapper>
         <Content>
           <InnerWrapper>
@@ -189,25 +189,22 @@ const Header = () => {
             </TitleWrapper>
             <Links ref={linksRef}>
               <LinkWrapper>
-                <Button as={Link} to="#projects">
-                  Projects
-                </Button>
+                <Link smooth offset={matches ? -130 : -50} to="projects">
+                  <Button>Projects</Button>
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Button
-                  secondary="true"
-                  animated="true"
-                  as={Link}
-                  to="#contact"
-                >
-                  Contact me
-                </Button>
+                <Link smooth offset={matches ? -130 : -50} to="contact">
+                  <Button secondary animated>
+                    Contact me
+                  </Button>
+                </Link>
               </LinkWrapper>
             </Links>
           </InnerWrapper>
         </Content>
       </Wrapper>
-    </>
+    </Element>
   );
 };
 

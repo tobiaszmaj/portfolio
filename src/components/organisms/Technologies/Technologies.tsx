@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
+import { Element } from 'react-scroll';
 import Content from 'components/atoms/Content/Content';
-import Anchor from 'components/atoms/Anchor/Anchor';
 import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
 import HeroAnimation from 'components/molecules/HeroAnimation/HeroAnimation';
 import checkmarkIcon from 'assets/icons/checkmark.svg';
@@ -125,9 +125,8 @@ const Technologies = () => {
   }, []);
 
   return (
-    <>
-      <Anchor name="technologies" />
-      <Wrapper id="technologies-content">
+    <Wrapper id="technologies">
+      <Element name="technologies">
         <Content>
           <Main>
             <InnerWrapper>
@@ -169,8 +168,8 @@ const Technologies = () => {
             </AnimationWrapper>
           </Main>
         </Content>
-      </Wrapper>
-    </>
+      </Element>
+    </Wrapper>
   );
 };
 
