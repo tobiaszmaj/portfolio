@@ -39,22 +39,24 @@ interface FormValues {
     message: string;
 }
 
+interface Data {
+    [key: string]: string;
+}
+
 const initialValues: FormValues = {
     name: '',
     email: '',
     message: '',
 };
 
-const encode = data => {
-    console.log(data);
-    return Object.keys(data).map(
-        key =>
-            `${encodeURIComponent(key)}=${encodeURIComponent(data[key]).join('&')}`
-    );
+const encode = (data: Data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
 };
 
 const ContactForm = () => {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState('');
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -69,9 +71,9 @@ const ContactForm = () => {
             initialValues={initialValues}
             validationSchema={ContactSchema}
             onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
-                if (token !== null) {
+                if (token) {
                     const sendEmail = async () => {
-                        await fetch('/', {
+                        const data = await fetch('/', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: encode({
@@ -80,7 +82,8 @@ const ContactForm = () => {
                                 'g-recaptcha-response': token,
                             }),
                         });
-                        console.log('wyslane es');
+                        console.log(data);
+                        setSubmitting(false);
                     };
                     sendEmail();
                 }
@@ -137,9 +140,6 @@ const ContactForm = () => {
                         theme="dark"
                         verifyCallback={response => {
                             setToken(response);
-                        }}
-                        onloadCallback={() => {
-                            console.log('done loading');
                         }}
                     />
                     <StyledButton animated submit disabled={isSubmitting} type="submit">
