@@ -71,8 +71,9 @@ const ContactForm = () => {
             initialValues={initialValues}
             validationSchema={ContactSchema}
             onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
+                console.log('token', token);
                 if (token) {
-                    console.log('token', token);
+                    console.log('token passed', token);
                     fetch('/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -140,6 +141,7 @@ const ContactForm = () => {
                         theme="dark"
                         verifyCallback={response => {
                             setToken(response);
+                            console.log(response);
                         }}
                     />
                     <StyledButton animated submit disabled={isSubmitting} type="submit">
