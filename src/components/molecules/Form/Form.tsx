@@ -111,6 +111,7 @@ const ContactForm = () => {
                     };
                     sendMessage();
                 } else {
+                    setSubmitting(false);
                     setSubmitBtn({
                         content: 'You have to verify reCAPTCHA first!',
                         color: 'red',
@@ -168,9 +169,13 @@ const ContactForm = () => {
                     />
                     <Recaptcha
                         sitekey={process.env.SITE_RECAPTCHA_KEY}
+                        render="explicit"
                         theme="dark"
                         verifyCallback={response => {
                             setToken(response);
+                        }}
+                        onloadCallback={() => {
+                            clearButton();
                         }}
                     />
                     <StyledButton
