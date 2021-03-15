@@ -72,27 +72,20 @@ const ContactForm = () => {
             validationSchema={ContactSchema}
             onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
                 if (token) {
-                    const sendEmail = async () => {
-                        try {
-                            console.log('token: ', token);
-                            const data = await fetch('/', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                },
-                                body: encode({
-                                    'form-name': 'contact-form',
-                                    ...values,
-                                    'g-recaptcha-response': token,
-                                }),
-                            });
-                            console.log(data);
-                            setSubmitting(false);
-                        } catch (err) {
-                            console.log(err);
-                        }
-                    };
-                    sendEmail();
+                    console.log('token', token);
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: encode({
+                            'form-name': 'contact-form',
+                            ...values,
+                            'g-recaptcha-response': token,
+                        }),
+                    })
+                        .then(() => {
+                            alert('send');
+                        })
+                        .catch(error => alert(error));
                 }
             }}
         >
