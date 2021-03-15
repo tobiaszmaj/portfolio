@@ -1,9 +1,11 @@
+// @ts-nocheck
 import styled, { css, keyframes } from 'styled-components';
 
 interface Props {
   readonly secondary?: boolean | string;
   readonly animated?: boolean | string;
   readonly submit?: boolean | string;
+  readonly disabled?: boolean | string;
 }
 
 const pulse = keyframes`
@@ -12,6 +14,15 @@ const pulse = keyframes`
   }
   100% {
     box-shadow: 0 0 0 0 rgba(217, 244, 255, 0);
+  }
+`;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 `;
 
@@ -47,11 +58,29 @@ const Button = styled.button<Props>`
       background: ${({ theme }) => theme.blue};
       color: ${({ theme }) => theme.white};
       font-size: ${({ theme }) => theme.fontSize.m};
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70px;
       &:hover {
         border-color: ${({ theme }) => theme.blue100};
         color: ${({ theme }) => theme.white};
         background: transparent;
         background-size: 150%;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border: 3px solid ${({ theme }) => theme.white};
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-radius: 50%;
+        // @ts-ignore
+        opacity: ${({ disabled }) => (disabled ? '1' : '0')};
+        animation: ${spin} 1s ease infinite;
       }
     `}
   ${({ animated }) =>

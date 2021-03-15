@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import FormInput from 'components/molecules/Form/FormInput';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 
 const StyledButton = styled(Button)`
@@ -32,17 +32,26 @@ const ContactSchema = Yup.object().shape({
         .required('Message is required!'),
 });
 
+interface FormValues {
+    name: string;
+    email: string;
+    message: string;
+}
+
+const initialValues: FormValues = {
+    name: '',
+    email: '',
+    message: '',
+};
+
 const ContactForm = () => {
     return (
         <Formik
-            initialValues={{
-                name: '',
-                email: '',
-                message: '',
-            }}
+            initialValues={initialValues}
             validationSchema={ContactSchema}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
                 setTimeout(() => {
+                    console.log(values);
                     setSubmitting(false);
                 }, 1000);
             }}
@@ -56,7 +65,14 @@ const ContactForm = () => {
                 handleSubmit,
                 isSubmitting,
             }) => (
-                <Form onSubmit={handleSubmit} autoComplete="off">
+                <Form
+                    onSubmit={handleSubmit}
+                    autoComplete="off"
+                    method="post"
+                    name="contact-form"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                >
                     <FormInput
                         id="name"
                         label="Name"

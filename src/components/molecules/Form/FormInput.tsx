@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 interface Props {
-    id: string;
-    value: string;
-    label: string;
-    onChangeFn: () => string;
-    onBlurFn: () => boolean;
-    touched: boolean | undefined;
-    errors: string | undefined;
-    textarea?: boolean;
+  id: string;
+  value: string;
+  label: string;
+  onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlurFn: (e: any) => void;
+  touched: boolean | undefined;
+  errors: string | undefined;
+  textarea?: boolean;
 }
 
 interface InputProps {
-    readonly id: string;
-    readonly name: string;
-    readonly onChange: () => string;
-    readonly onBlur: () => boolean;
-    readonly value: string;
-    readonly invalid: boolean;
-    readonly valid: boolean;
+  id: string;
+  name: string;
+  as: ReactElement;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: any) => void;
+  value: string;
+  invalid: boolean;
+  valid: boolean;
 }
 
 interface LabelProps {
-    isInvalid: boolean;
+  isInvalid: boolean;
 }
 
 const InputItem = styled.div`
@@ -48,8 +49,8 @@ const Label = styled.label<LabelProps>`
     font-size: ${({ theme }) => theme.fontSize.s};
   }
   ${({ isInvalid }) =>
-        isInvalid &&
-        css`
+    isInvalid &&
+    css`
       color: ${({ theme }) => theme.red};
     `}
 `;
@@ -76,45 +77,46 @@ const StyledInput = styled.input<InputProps>`
     font-size: ${({ theme }) => theme.fontSize.s};
   }
   ${({ valid }) =>
-        valid &&
-        css`
+    valid &&
+    css`
       border-color: ${({ theme }) => theme.green};
     `}
   ${({ invalid }) =>
-        invalid &&
-        css`
+    invalid &&
+    css`
       border-color: ${({ theme }) => theme.red100};
     `}
 `;
 
 const FormInput = ({
-    id,
-    onChangeFn,
-    onBlurFn,
-    value,
-    touched,
-    errors,
-    label,
-    textarea,
+  id,
+  onChangeFn,
+  onBlurFn,
+  value,
+  touched,
+  errors,
+  label,
+  textarea,
 }: Props) => (
-    <InputItem>
-        <StyledInput
-            type="text"
-            as={textarea ? 'textarea' : 'input'}
-            rows="6"
-            id={id}
-            name={id}
-            placeholder=" "
-            onChange={onChangeFn}
-            onBlur={onBlurFn}
-            value={value}
-            invalid={touched && errors}
-            valid={touched && !errors}
-        />
-        <Label htmlFor={id} isInvalid={touched && errors}>
-            {(errors && touched && errors) || label}
-        </Label>
-    </InputItem>
+  <InputItem>
+    <StyledInput
+      type="text"
+      // @ts-ignore
+      as={textarea ? 'textarea' : 'input'}
+      rows="6"
+      id={id}
+      name={id}
+      placeholder=" "
+      onChange={onChangeFn}
+      onBlur={onBlurFn}
+      value={value}
+      invalid={Boolean(touched && errors)}
+      valid={Boolean(touched && !errors)}
+    />
+    <Label htmlFor={id} isInvalid={Boolean(touched && errors)}>
+      {(errors && touched && errors) || label}
+    </Label>
+  </InputItem>
 );
 
 export default FormInput;
