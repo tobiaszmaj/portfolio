@@ -5,12 +5,19 @@ import { Element } from 'react-scroll';
 import SectionHeader from 'components/molecules/SectionHeader/SectionHeader';
 import Form from 'components/molecules/Form/Form';
 import ContactLinks from 'components/organisms/Contact/ContactLinks';
+import planeIcon from 'assets/icons/plane.svg';
 
 const Wrapper = styled.section`
   position: relative;
   padding: 50px 0 20px;
-  background: ${({ theme }) => theme.dark100};
   color: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.dark100};
+  ${({ theme }) => theme.mq.lg} {
+    background: url(${planeIcon}) no-repeat;
+    background-position: 80% 0%;
+    background-size: 220px;
+    background-color: ${({ theme }) => theme.dark100};
+  }
 `;
 
 const InnerWrapper = styled.div`

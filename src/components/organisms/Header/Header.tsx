@@ -1,11 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link, Element } from 'react-scroll';
 import gsap from 'gsap';
+import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
 import Button from 'components/atoms/Button/Button';
 import Title from 'assets/icons/title.inline.svg';
+import sendIcon from 'assets/icons/send.svg';
 import useMedia from 'hooks/useMedia';
+
+gsap.registerPlugin(MotionPathPlugin);
 
 interface Props {
   readonly isActive: boolean;
@@ -16,7 +20,7 @@ const Wrapper = styled.header`
   width: 100%;
   padding: 100px 0;
   background: ${({ theme }) => theme.darkGradient};
-  &:after {
+  &:before {
     content: '';
     position: absolute;
     top: 0;
@@ -117,17 +121,38 @@ const Name = styled.span<Props>`
   }
 `;
 
+const PaperPlaneWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -300px;
+`;
+
+const PaperPlane = styled.img`
+  display: block;
+  width: 110px;
+  height: 55px;
+  z-index: 5;
+  visibility: hidden;
+`;
+
 const Header = () => {
   const [isLineActive, setIsLineActive] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subTitleRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const paperPlaneRef = useRef<HTMLImageElement>(null);
   const matches = useMedia('(min-width: 800px)');
+  const matchesDesktop = useMedia('(min-width: 1200px)');
+
+  console.log(matches, matchesDesktop);
 
   useEffect(() => {
     const title = titleRef.current;
     const subTitle = subTitleRef.current;
     const linksWrapper = linksRef.current;
+    const paperPlane = paperPlaneRef.current;
 
     if (title && linksWrapper) {
       const links = linksWrapper.children;
@@ -172,12 +197,44 @@ const Header = () => {
         },
         'start'
       );
+      if (paperPlane) {
+        tl.to(paperPlane, { autoAlpha: 1, delay: 4 }, 'start');
+        tl.to(
+          paperPlane,
+          {
+            duration: 6,
+            delay: 4,
+            ease: 'Power1.easeInOut',
+            motionPath: {
+              path: [
+                { x: -200, y: 100 },
+                { x: 200, y: 400 },
+                { x: 500, y: 580 },
+                { x: 800, y: 660 },
+                { x: 1100, y: 740 },
+                { x: 1550, y: 980 },
+                { x: 2450, y: 1260 },
+              ],
+              curviness: 1.25,
+              type: 'cubic',
+              autoRotate: true,
+              alignOrigin: [0.5, 0.5],
+            },
+          },
+          'start'
+        );
+      }
     }
   }, []);
 
   return (
     <Element name="home">
       <Wrapper>
+        {matchesDesktop && (
+          <PaperPlaneWrapper>
+            <PaperPlane src={sendIcon} ref={paperPlaneRef} />
+          </PaperPlaneWrapper>
+        )}
         <Content>
           <InnerWrapper>
             <SubTitle ref={subTitleRef}>
