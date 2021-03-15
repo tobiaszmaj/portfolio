@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import FormInput from 'components/molecules/Form/FormInput';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers, Field } from 'formik';
 import * as Yup from 'yup';
 import Recaptcha from 'react-recaptcha';
 
@@ -57,6 +57,10 @@ const encode = (data: Data) => {
 
 const ContactForm = () => {
     const [token, setToken] = useState('');
+    const [submitBtn, setSubmitBtn] = useState({
+        content: 'Send message',
+        color: 'blue',
+    });
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -66,27 +70,52 @@ const ContactForm = () => {
         document.body.appendChild(script);
     }, []);
 
+    const clearButton = () => {
+        setSubmitBtn({ content: 'Send message', color: 'blue' });
+    };
+
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={ContactSchema}
-            onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
-                console.log('token', token);
+            onSubmit={(
+                values,
+                { setSubmitting, resetForm }: FormikHelpers<FormValues>
+            ) => {
                 if (token) {
-                    console.log('token passed', token);
-                    fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: encode({
-                            'form-name': 'contact-form',
-                            ...values,
-                            'g-recaptcha-response': token,
-                        }),
-                    })
-                        .then(() => {
-                            alert('send');
-                        })
-                        .catch(error => alert(error));
+                    const sendMessage = async () => {
+                        try {
+                            await fetch('/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: encode({
+                                    'form-name': 'contact-form',
+                                    ...values,
+                                    'g-recaptcha-response': token,
+                                }),
+                            });
+                            setSubmitting(false);
+                            setSubmitBtn({
+                                content: "All good! I'll respond as soon as possible!",
+                                color: 'green',
+                            });
+                            resetForm();
+                            setTimeout(clearButton, 2500);
+                        } catch (err) {
+                            setSubmitting(false);
+                            setSubmitBtn({ content: 'Something went wrong!', color: 'red' });
+                            setTimeout(clearButton, 1500);
+                        }
+                    };
+                    sendMessage();
+                } else {
+                    setSubmitBtn({
+                        content: 'You have to verify reCAPTCHA first!',
+                        color: 'red',
+                    });
+                    setTimeout(clearButton, 1000);
                 }
             }}
         >
@@ -107,6 +136,8 @@ const ContactForm = () => {
                     data-netlify-honeypot="bot-field"
                     data-netlify-recaptcha="true"
                 >
+                    <Field type="hidden" name="form-name" />
+                    <Field type="hidden" name="bot-field" />
                     <FormInput
                         id="name"
                         label="Name"
@@ -137,18 +168,20 @@ const ContactForm = () => {
                     />
                     <Recaptcha
                         sitekey={process.env.SITE_RECAPTCHA_KEY}
-                        render="explicit"
                         theme="dark"
                         verifyCallback={response => {
                             setToken(response);
-                            console.log(response);
-                        }}
-                        onloadCallback={() => {
-                            console.log('done loading!');
                         }}
                     />
-                    <StyledButton animated submit disabled={isSubmitting} type="submit">
-                        {!isSubmitting && 'Send message'}
+                    <StyledButton
+                        color={submitBtn.color}
+                        animated
+                        submit
+                        disabled={isSubmitting || submitBtn.color !== 'blue'}
+                        isSubmitting={isSubmitting}
+                        type="submit"
+                    >
+                        {!isSubmitting && submitBtn.content}
                     </StyledButton>
                 </Form>
             )}

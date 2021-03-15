@@ -5,7 +5,8 @@ interface Props {
   readonly secondary?: boolean | string;
   readonly animated?: boolean | string;
   readonly submit?: boolean | string;
-  readonly disabled?: boolean | string;
+  readonly isSubmitting?: boolean | string;
+  readonly color?: string;
 }
 
 const pulse = keyframes`
@@ -79,7 +80,7 @@ const Button = styled.button<Props>`
         border-bottom: 3px solid transparent;
         border-radius: 50%;
         // @ts-ignore
-        opacity: ${({ disabled }) => (disabled ? '1' : '0')};
+        opacity: ${({ isSubmitting }) => (isSubmitting ? '1' : '0')};
         animation: ${spin} 1s ease infinite;
       }
     `}
@@ -89,6 +90,32 @@ const Button = styled.button<Props>`
       box-shadow: 0 0 0 0 rgba(217, 244, 255, 0.15);
       animation: ${pulse} 3.5s infinite cubic-bezier(0.66, 0, 0, 1);
       animation-delay: 2s;
+    `}
+    ${({ color }) =>
+    color === 'blue' &&
+    css`
+      border-color: ${({ theme }) => theme.blue};
+      background: ${({ theme }) => theme.blue};
+    `}
+  ${({ color }) =>
+    color === 'green' &&
+    css`
+      border-color: ${({ theme }) => theme.green} !important;
+      background: ${({ theme }) => theme.green} !important;
+      &:hover {
+        border-color: ${({ theme }) => theme.green};
+        background: ${({ theme }) => theme.green};
+      }
+    `}
+  ${({ color }) =>
+    color === 'red' &&
+    css`
+      border-color: ${({ theme }) => theme.red} !important;
+      background: ${({ theme }) => theme.red} !important;
+      &:hover {
+        border-color: ${({ theme }) => theme.red};
+        background: ${({ theme }) => theme.red};
+      }
     `}
 `;
 
