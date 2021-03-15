@@ -1,12 +1,13 @@
-import React from "react"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import previewImage from 'assets/images/portfolio-project.png';
 
 interface Props {
-  description?: string
-  lang?: string
-  meta?: []
-  title: string
+  description?: string;
+  lang?: string;
+  meta?: [];
+  title: string;
 }
 
 const SEO = ({ description, lang, meta, title }: Props) => {
@@ -22,9 +23,9 @@ const SEO = ({ description, lang, meta, title }: Props) => {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -51,6 +52,10 @@ const SEO = ({ description, lang, meta, title }: Props) => {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: previewImage,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -66,9 +71,13 @@ const SEO = ({ description, lang, meta, title }: Props) => {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `twitter:image`,
+          content: previewImage,
+        },
       ].concat(meta || [])}
     />
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;

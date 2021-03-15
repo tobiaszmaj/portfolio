@@ -1,11 +1,6 @@
 import React from 'react';
-import SEO from 'components/atoms/SEO/SEO';
+import { Redirect } from '@reach/router';
 
-const NotFoundPage = () => (
-  <>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-  </>
-);
+const NotFoundPage = () => <Redirect to="/" />;
 
 export default NotFoundPage;
