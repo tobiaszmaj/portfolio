@@ -76,7 +76,7 @@ const ContactForm = () => {
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: encode({
                                 'form-name': 'contact-form',
-                                ...data,
+                                ...values,
                                 'g-recaptcha-response': token,
                             }),
                         });
