@@ -143,6 +143,9 @@ const ContactForm = () => {
                             setToken(response);
                             console.log(response);
                         }}
+                        onloadCallback={() => {
+                            console.log('done loading!');
+                        }}
                     />
                     <StyledButton animated submit disabled={isSubmitting} type="submit">
                         {!isSubmitting && 'Send message'}
