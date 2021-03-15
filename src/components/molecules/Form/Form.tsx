@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import FormInput from 'components/molecules/Form/FormInput';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import Recaptcha from 'react-recaptcha';
 
 const StyledButton = styled(Button)`
   width: 100%;
@@ -44,16 +45,45 @@ const initialValues: FormValues = {
     message: '',
 };
 
+const encode = data => {
+    console.log(data);
+    return Object.keys(data).map(
+        key =>
+            `${encodeURIComponent(key)}=${encodeURIComponent(data[key]).join('&')}`
+    );
+};
+
 const ContactForm = () => {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+    }, []);
+
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={ContactSchema}
             onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
-                setTimeout(() => {
-                    console.log(values);
-                    setSubmitting(false);
-                }, 1000);
+                if (token !== null) {
+                    const sendEmail = async () => {
+                        await fetch('/', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: encode({
+                                'form-name': 'contact-form',
+                                ...data,
+                                'g-recaptcha-response': token,
+                            }),
+                        });
+                        console.log('wyslane es');
+                    };
+                    sendEmail();
+                }
             }}
         >
             {({
@@ -68,10 +98,10 @@ const ContactForm = () => {
                 <Form
                     onSubmit={handleSubmit}
                     autoComplete="off"
-                    method="post"
                     name="contact-form"
                     data-netlify="true"
                     data-netlify-honeypot="bot-field"
+                    data-netlify-recaptcha="true"
                 >
                     <FormInput
                         id="name"
@@ -100,6 +130,17 @@ const ContactForm = () => {
                         value={values.message}
                         touched={touched.message}
                         errors={errors.message}
+                    />
+                    <Recaptcha
+                        sitekey={process.env.SITE_RECAPTCHA_KEY}
+                        render="explicit"
+                        theme="dark"
+                        verifyCallback={response => {
+                            console.log(response);
+                        }}
+                        onloadCallback={() => {
+                            console.log('done loading');
+                        }}
                     />
                     <StyledButton animated submit disabled={isSubmitting} type="submit">
                         {!isSubmitting && 'Send message'}
