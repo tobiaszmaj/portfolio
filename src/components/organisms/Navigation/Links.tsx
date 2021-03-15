@@ -83,13 +83,13 @@ const Links = ({ big }: Props) => {
   return (
     <>
       <ListItem big={big || false} isActive={activeLink === 'home'}>
-        <StyledLink duration={1000} smooth to="home">
+        <StyledLink duration={800} smooth to="home">
           Home
         </StyledLink>
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'technologies'}>
         <StyledLink
-          duration={1000}
+          duration={800}
           offset={matches ? -130 : -50}
           smooth
           to="technologies"
@@ -99,7 +99,7 @@ const Links = ({ big }: Props) => {
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'projects'}>
         <StyledLink
-          duration={1000}
+          duration={800}
           offset={matches ? -130 : -50}
           smooth
           to="projects"
@@ -109,7 +109,7 @@ const Links = ({ big }: Props) => {
       </ListItem>
       <ListItem big={big || false} isActive={activeLink === 'contact'}>
         <StyledLink
-          duration={1200}
+          duration={800}
           offset={matches ? -130 : -50}
           smooth
           to="contact"

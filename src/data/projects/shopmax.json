@@ -5,6 +5,7 @@
     "codeLink": "",
     "demoLink": "",
     "image": "../../assets/images/ecommerce-project.png",
+    "withServer": true,
     "technologies": [
         {
             "name": "React & Hooks",

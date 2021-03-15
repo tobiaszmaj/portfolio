@@ -5,6 +5,7 @@
     "image": "../../assets/images/rps-project.png",
     "codeLink": "",
     "demoLink": "",
+    "withServer": false,
     "technologies": [
         {
             "name": "Gatsby",

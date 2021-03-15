@@ -143,10 +143,9 @@ const Header = () => {
   const subTitleRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const paperPlaneRef = useRef<HTMLImageElement>(null);
+
   const matches = useMedia('(min-width: 800px)');
   const matchesDesktop = useMedia('(min-width: 1200px)');
-
-  console.log(matches, matchesDesktop);
 
   useEffect(() => {
     const title = titleRef.current;

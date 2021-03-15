@@ -5,6 +5,7 @@
     "image": "../../assets/images/whereintheworld-project.png",
     "codeLink": "",
     "demoLink": "",
+    "withServer": false,
     "technologies": [
         {
             "name": "Gatsby",

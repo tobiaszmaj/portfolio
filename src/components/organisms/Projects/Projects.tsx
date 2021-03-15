@@ -15,6 +15,7 @@ interface QueryProps {
         description: string;
         demoLink: string;
         codeLink: string;
+        withServer: boolean;
         technologies: {
           name: string;
           icon: {
@@ -66,6 +67,7 @@ const Projects = () => {
         description
         demoLink
         codeLink
+        withServer
         technologies {
           name
           icon {
@@ -96,7 +98,15 @@ const Projects = () => {
           <InnerWrapper>
             {allProjectsJson.nodes.map(
               (
-                { title, description, technologies, image, demoLink, codeLink },
+                {
+                  title,
+                  description,
+                  technologies,
+                  image,
+                  demoLink,
+                  codeLink,
+                  withServer,
+                },
                 index: number
               ) => (
                 <Project
@@ -107,6 +117,7 @@ const Projects = () => {
                   description={description}
                   image={image.childImageSharp.fluid}
                   technologies={technologies}
+                  withServer={withServer}
                   right={Boolean(index % 2)}
                 />
               )

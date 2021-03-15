@@ -42,7 +42,6 @@ const ContactForm = () => {
             }}
             validationSchema={ContactSchema}
             onSubmit={(values, { setSubmitting }) => {
-                console.log(values);
                 setTimeout(() => {
                     setSubmitting(false);
                 }, 1000);

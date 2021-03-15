@@ -25,6 +25,7 @@ interface Props {
   }[];
   image: FluidObject;
   right: boolean;
+  withServer: boolean;
 }
 
 const Wrapper = styled.article`
@@ -64,7 +65,8 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ImageInnerWrapper = styled.div`
+const ImageLink = styled.a`
+  display: block;
   width: 100%;
   height: 100%;
   transition-property: transform, opacity;
@@ -108,6 +110,10 @@ const Description = styled.p`
   ${({ theme }) => theme.mq.lg} {
     max-width: 620px;
   }
+`;
+
+const Info = styled(Description)`
+  margin-top: 5px !important;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -183,6 +189,7 @@ const Project = ({
   right,
   demoLink,
   codeLink,
+  withServer,
 }: Props) => {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -216,13 +223,27 @@ const Project = ({
   return (
     <Wrapper>
       <ImageWrapper>
-        <ImageInnerWrapper ref={imageRef}>
-          <StyledImage fluid={image} alt={title} />
-        </ImageInnerWrapper>
+        <div ref={imageRef}>
+          <ImageLink href={demoLink} target="_blank">
+            <StyledImage fluid={image} alt={title} />
+          </ImageLink>
+        </div>
       </ImageWrapper>
       <Content right={right} ref={contentRef}>
         <Title>{title}</Title>
         <Description>{description}</Description>
+        {title.toLowerCase() === 'favnote' && (
+          <Info>
+            You can log with - login: <b>user123</b>, password: <b>user123</b>{' '}
+            or create an account!
+          </Info>
+        )}
+        {withServer && (
+          <Info>
+            <b>Note:</b> It may take some time till the server starts at the
+            beginning.
+          </Info>
+        )}
         <Technologies>
           {technologies.map(({ icon, name }) => (
             <Technology key={name} icon={icon.publicURL}>
