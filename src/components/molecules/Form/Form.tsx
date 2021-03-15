@@ -136,7 +136,7 @@ const ContactForm = () => {
                         render="explicit"
                         theme="dark"
                         verifyCallback={response => {
-                            console.log(response);
+                            setToken(response);
                         }}
                         onloadCallback={() => {
                             console.log('done loading');
