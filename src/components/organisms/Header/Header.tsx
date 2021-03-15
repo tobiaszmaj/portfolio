@@ -231,7 +231,7 @@ const Header = () => {
       <Wrapper>
         {matchesDesktop && (
           <PaperPlaneWrapper>
-            <PaperPlane src={sendIcon} ref={paperPlaneRef} />
+            <PaperPlane src={sendIcon} ref={paperPlaneRef} alt="paper plane" />
           </PaperPlaneWrapper>
         )}
         <Content>

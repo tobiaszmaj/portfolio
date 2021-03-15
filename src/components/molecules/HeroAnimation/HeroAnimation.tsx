@@ -221,7 +221,7 @@ const HeroAnimation = () => {
           <TextWrapper>
             <Text />
           </TextWrapper>
-          <Image ref={imageRef} />
+          <Image ref={imageRef} alt="desktop animation" />
         </MainSVGInnerWrapper>
       </MainSVGWrapper>
     </Wrapper>
