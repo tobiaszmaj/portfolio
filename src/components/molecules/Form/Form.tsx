@@ -73,17 +73,24 @@ const ContactForm = () => {
             onSubmit={(values, { setSubmitting }: FormikHelpers<FormValues>) => {
                 if (token) {
                     const sendEmail = async () => {
-                        const data = await fetch('/', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: encode({
-                                'form-name': 'contact-form',
-                                ...values,
-                                'g-recaptcha-response': token,
-                            }),
-                        });
-                        console.log(data);
-                        setSubmitting(false);
+                        try {
+                            console.log('token: ', token);
+                            const data = await fetch('/', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: encode({
+                                    'form-name': 'contact-form',
+                                    ...values,
+                                    'g-recaptcha-response': token,
+                                }),
+                            });
+                            console.log(data);
+                            setSubmitting(false);
+                        } catch (err) {
+                            console.log(err);
+                        }
                     };
                     sendEmail();
                 }
