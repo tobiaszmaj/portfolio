@@ -1,5 +1,5 @@
 {
-    "order": 3,
+    "order": 1,
     "title": "Portfolio",
     "description": "My personal website made with Gatsby and Typescript.",
     "image": "../../assets/images/portfolio-project.png",
