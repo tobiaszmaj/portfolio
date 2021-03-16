@@ -41,8 +41,6 @@ const Wrapper = styled.article`
   }
 `;
 
-const StyledImage = styled(Image)``;
-
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -149,7 +147,7 @@ const LinkWrapper = styled.div`
   }
 `;
 
-const Technologies = styled.div`
+const Technologies = styled.ul`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 0 10px;
@@ -161,7 +159,7 @@ const Technologies = styled.div`
   }
 `;
 
-const Technology = styled.div<IconProps>`
+const Technology = styled.li<IconProps>`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.dark200};
@@ -225,7 +223,7 @@ const Project = ({
       <ImageWrapper>
         <div ref={imageRef}>
           <ImageLink href={demoLink} target="_blank">
-            <StyledImage fluid={image} alt={title} />
+            <Image fluid={image} alt={title} />
           </ImageLink>
         </div>
       </ImageWrapper>
