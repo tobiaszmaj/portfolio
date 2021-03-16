@@ -2,10 +2,10 @@
 import styled, { css, keyframes } from 'styled-components';
 
 interface Props {
-  readonly secondary?: boolean | string;
-  readonly animated?: boolean | string;
-  readonly submit?: boolean | string;
-  readonly isSubmitting?: boolean | string;
+  readonly secondary?: boolean;
+  readonly animated?: boolean;
+  readonly submit?: boolean;
+  readonly isSubmitting?: boolean;
   readonly color?: string;
 }
 
@@ -79,7 +79,6 @@ const Button = styled.button<Props>`
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
         border-radius: 50%;
-        // @ts-ignore
         opacity: ${({ isSubmitting }) => (isSubmitting ? '1' : '0')};
         animation: ${spin} 1s ease infinite;
       }
