@@ -4,7 +4,7 @@ module.exports = {
     description: `Front End Developer portfolio made with Gatsby and TypeScript by Tobiasz Maj - React Developer | Web Development`,
     author: `@tobiaszmaj`,
     url: ``,
-    previewImage: '/preview.png',
+    previewImage: '/preview.jpeg',
     language: 'en',
   },
   plugins: [

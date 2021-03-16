@@ -2,7 +2,7 @@
     "order": 5,
     "title": "Rock, Paper, Scissors",
     "description": "Rock, Paper, Scissors game made with Gatsby. It has two modes - normal and advanced, in which there are two additional options.",
-    "image": "../../assets/images/rps-project.png",
+    "image": "../../assets/images/rps-project.jpeg",
     "codeLink": "",
     "demoLink": "",
     "withServer": false,

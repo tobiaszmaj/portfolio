@@ -2,7 +2,7 @@
     "order": 3,
     "title": "Portfolio",
     "description": "My personal website made with Gatsby and Typescript.",
-    "image": "../../assets/images/portfolio-project.png",
+    "image": "../../assets/images/portfolio-project.jpeg",
     "codeLink": "",
     "demoLink": "",
     "withServer": false,

@@ -154,8 +154,7 @@ const Header = () => {
     const linksWrapper = linksRef.current;
     const paperPlaneWrapper = paperPlaneRef.current;
 
-    if (title && linksWrapper && paperPlaneWrapper) {
-      const [paperPlane] = paperPlaneWrapper.children;
+    if (title && linksWrapper) {
       const links = linksWrapper.children;
       const letters = [...title.querySelectorAll('.letter')];
       const outlines = letters.map(({ children }) => children[0]);
@@ -198,7 +197,9 @@ const Header = () => {
         },
         'start'
       );
-      if (paperPlane) {
+      if (paperPlaneWrapper && window.innerWidth >= 1200) {
+        const [paperPlane] = paperPlaneWrapper.children;
+
         tl.to(paperPlane, { autoAlpha: 1, delay: 4 }, 'start');
         tl.to(
           paperPlane,

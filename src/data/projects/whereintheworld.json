@@ -2,7 +2,7 @@
     "order": 4,
     "title": "Where in the world?",
     "description": "The app made with Gatsby. It uses restcountries.eu API to get informations about any country in the world.",
-    "image": "../../assets/images/whereintheworld-project.png",
+    "image": "../../assets/images/whereintheworld-project.jpeg",
     "codeLink": "",
     "demoLink": "",
     "withServer": false,
