@@ -20,6 +20,7 @@ const Wrapper = styled.header`
   width: 100%;
   padding: 100px 0;
   background: ${({ theme }) => theme.darkGradient};
+  z-index: 2;
   &:before {
     content: '';
     position: absolute;
@@ -151,9 +152,10 @@ const Header = () => {
     const title = titleRef.current;
     const subTitle = subTitleRef.current;
     const linksWrapper = linksRef.current;
-    const paperPlane = paperPlaneRef.current;
+    const paperPlaneWrapper = paperPlaneRef.current;
 
-    if (title && linksWrapper) {
+    if (title && linksWrapper && paperPlaneWrapper) {
+      const [paperPlane] = paperPlaneWrapper.children;
       const links = linksWrapper.children;
       const letters = [...title.querySelectorAll('.letter')];
       const outlines = letters.map(({ children }) => children[0]);
@@ -222,6 +224,7 @@ const Header = () => {
           },
           'start'
         );
+        tl.set(paperPlaneWrapper, { display: 'none' });
       }
     }
   }, []);
@@ -230,8 +233,8 @@ const Header = () => {
     <Element name="home">
       <Wrapper>
         {matchesDesktop && (
-          <PaperPlaneWrapper>
-            <PaperPlane src={sendIcon} ref={paperPlaneRef} alt="paper plane" />
+          <PaperPlaneWrapper ref={paperPlaneRef}>
+            <PaperPlane src={sendIcon} alt="paper plane" />
           </PaperPlaneWrapper>
         )}
         <Content>

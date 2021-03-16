@@ -25,15 +25,16 @@ gsap.registerPlugin(ScrollTrigger);
 const Wrapper = styled.div`
   position: relative;
   width: 620px;
-  height: 620px;
+  height: 720px;
+  margin-top: -100px;
   background: url(${blobImg}) no-repeat;
   background-position: 20% 50%;
-  background-size: 115%;
+  background-size: 118%;
   opacity: 0;
   overflow: hidden;
   ${({ theme }) => theme.mq.xxl} {
     width: 700px;
-    height: 700px;
+    height: 800px;
     background-size: 110%;
     background-position: 0% 50%;
   }
@@ -42,10 +43,10 @@ const Wrapper = styled.div`
 const MainSVGWrapper = styled.div`
   position: absolute;
   width: 400px;
-  height: 400px;
+  height: 500px;
   top: 0;
-  left: 65%;
-  transform: translateX(-65%);
+  left: 60%;
+  transform: translateX(-60%);
 `;
 
 const MainSVGInnerWrapper = styled.div`
@@ -59,14 +60,14 @@ const NotificationSVGWrapper = styled.div`
   right: 80px;
   bottom: 70px;
   ${({ theme }) => theme.mq.xxl} {
-    right: 100px;
-    bottom: 130px;
+    right: 105px;
+    bottom: 140px;
   }
 `;
 
 const TextWrapper = styled.div`
   position: absolute;
-  top: 210px;
+  top: 310px;
   left: 178px;
 `;
 

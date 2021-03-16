@@ -11,6 +11,7 @@ const Wrapper = styled.section`
 position: relative;
 padding: 50px 0 20px;
 background-color: ${({ theme }) => theme.blue};
+z-index: 1;
 &:after {
     content: '';
     position: absolute;
