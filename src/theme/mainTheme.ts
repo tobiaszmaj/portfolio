@@ -17,7 +17,7 @@ export const theme = {
     subFont: `'Kalam', cursive`,
   },
   white: 'hsl(0, 0%, 100%)',
-  gray: 'hsl(0, 0%, 52%)',
+  gray: 'hsl(0, 0%, 72%)',
   gray50: 'hsl(0, 0%, 89%)',
   gray100: 'hsl(0, 0%, 96%)',
   dark: 'hsl(200, 15%, 8%)',

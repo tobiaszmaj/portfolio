@@ -222,7 +222,7 @@ const Project = ({
     <Wrapper>
       <ImageWrapper>
         <div ref={imageRef}>
-          <ImageLink href={demoLink} target="_blank">
+          <ImageLink href={demoLink} rel="noopener noreferrer" target="_blank">
             <Image fluid={image} alt={title} />
           </ImageLink>
         </div>
@@ -251,12 +251,23 @@ const Project = ({
         </Technologies>
         <ButtonsWrapper>
           <LinkWrapper>
-            <Button as="a" href={demoLink} target="_blanket">
+            <Button
+              as="a"
+              href={demoLink}
+              target="_blanket"
+              rel="noopener noreferrer"
+            >
               Live Demo
             </Button>
           </LinkWrapper>
           <LinkWrapper>
-            <Button as="a" href={codeLink} target="_blanket" secondary>
+            <Button
+              as="a"
+              href={codeLink}
+              target="_blanket"
+              secondary
+              rel="noopener noreferrer"
+            >
               View Code
             </Button>
           </LinkWrapper>
