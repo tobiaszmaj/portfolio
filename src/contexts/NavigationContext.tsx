@@ -35,32 +35,30 @@ const NavigationProvider = ({ children }: Props) => {
     };
 
     useEffect(() => {
-        if (window.location.pathname === '/') {
-            ScrollTrigger.create({
-                start: '50',
-                endTrigger: 'footer',
-                end: 'bottom top',
-                onToggle: ({ isActive }) => setIsTransparent(!isActive),
-            });
+        ScrollTrigger.create({
+            start: '50',
+            endTrigger: 'footer',
+            end: 'bottom top',
+            onToggle: ({ isActive }) => setIsTransparent(!isActive),
+        });
 
+        ScrollTrigger.create({
+            trigger: 'header',
+            start: 'top center',
+            end: 'bottom 90%',
+            onToggle: ({ isActive }) => isActive && setActiveLink('home'),
+        });
+
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
             ScrollTrigger.create({
-                trigger: 'header',
+                trigger: section,
                 start: 'top center',
-                end: 'bottom 90%',
-                onToggle: ({ isActive }) => isActive && setActiveLink('home'),
+                end: 'bottom bottom',
+                onToggle: ({ isActive }) => isActive && setActiveLink(section.id),
             });
-
-            const sections = document.querySelectorAll('section');
-
-            sections.forEach(section => {
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: 'top center',
-                    end: 'bottom bottom',
-                    onToggle: ({ isActive }) => isActive && setActiveLink(section.id),
-                });
-            });
-        }
+        });
     }, []);
 
     const context = {

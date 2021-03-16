@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Button from 'components/atoms/Button/Button';
 import styled from 'styled-components';
+import Button from 'components/atoms/Button/Button';
+import SEO from 'components/atoms/SEO/SEO';
 
 const Wrapper = styled.section`
   display: flex;
@@ -32,15 +33,16 @@ const StyledButton = styled(Button)`
 `;
 
 const NotFound = () => {
-    return (
-        <Wrapper>
-            <StyledTitle>404</StyledTitle>
-            <StyledHeading>Oops! Page not found :(</StyledHeading>
-            <StyledButton as={Link} to="/">
-                Homepage
+  return (
+    <Wrapper>
+      <SEO title="Not Found" />
+      <StyledTitle>404</StyledTitle>
+      <StyledHeading>Oops! Page not found :(</StyledHeading>
+      <StyledButton as={Link} to="/">
+        Homepage
       </StyledButton>
-        </Wrapper>
-    );
+    </Wrapper>
+  );
 };
 
 export default NotFound;

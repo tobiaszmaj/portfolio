@@ -7,6 +7,7 @@ import Content from 'components/atoms/Content/Content';
 import Links from 'components/organisms/Navigation/Links';
 import Fullnav from 'components/organisms/Navigation/Fullnav';
 import Logo from 'components/atoms/Logo/Logo';
+import SEO from 'components/atoms/SEO/SEO';
 
 interface Props {
     readonly isActive: boolean;
@@ -57,7 +58,7 @@ const List = styled.ul`
 `;
 
 const Navigation = () => {
-    const { isTransparent } = useContext(NavigationContext);
+    const { isTransparent, activeLink } = useContext(NavigationContext);
     const listRef = useRef<HTMLUListElement>(null);
 
     useEffect(() => {
@@ -79,20 +80,26 @@ const Navigation = () => {
         }
     }, []);
 
+    const currentSection =
+        activeLink.charAt(0).toUpperCase() + activeLink.slice(1);
+
     return (
-        <Wrapper isActive={!isTransparent}>
-            <Content>
-                <InnerWrapper>
-                    <LogoWrapper to="/">
-                        <Logo />
-                    </LogoWrapper>
-                    <List ref={listRef}>
-                        <Links />
-                    </List>
-                </InnerWrapper>
-                <Fullnav />
-            </Content>
-        </Wrapper>
+        <>
+            <SEO title={currentSection} />
+            <Wrapper isActive={!isTransparent}>
+                <Content>
+                    <InnerWrapper>
+                        <LogoWrapper to="/">
+                            <Logo />
+                        </LogoWrapper>
+                        <List ref={listRef}>
+                            <Links />
+                        </List>
+                    </InnerWrapper>
+                    <Fullnav />
+                </Content>
+            </Wrapper>
+        </>
     );
 };
 
