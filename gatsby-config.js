@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `Tobiasz Maj`,
-    description: `Front End Developer portfolio by Tobiasz Maj`,
+    description: `Front End Developer portfolio made with Gatsby and TypeScript by Tobiasz Maj - React Developer | Web Development`,
     author: `@tobiaszmaj`,
+    url: ``,
+    previewImage: '/preview.png',
   },
   plugins: [
     `gatsby-plugin-typescript`,
