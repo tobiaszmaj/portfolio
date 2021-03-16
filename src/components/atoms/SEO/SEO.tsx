@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 interface Props {
   description?: string;
-  lang?: `en`;
+  lang?: string;
   meta?: [];
   title: string;
 }
@@ -20,6 +20,7 @@ const SEO = ({ description, lang, meta, title }: Props) => {
             author
             url
             previewImage
+            language
           }
         }
       }
@@ -33,7 +34,7 @@ const SEO = ({ description, lang, meta, title }: Props) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: lang || site.siteMetadata.language,
       }}
       title={`${title} | Tobiasz Maj`}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
