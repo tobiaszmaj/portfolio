@@ -29,6 +29,7 @@ const SEO = ({ description, lang, meta, title }: Props) => {
   const metaDescription = description || site.siteMetadata.description;
 
   const metaImage = `${site.siteMetadata.url}${site.siteMetadata.previewImage}`;
+  console.log(metaImage);
 
   return (
     <Helmet
