@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Tobiasz Maj`,
+    title: `Web Development`,
     description: `Front End Developer portfolio made with Gatsby and TypeScript by Tobiasz Maj - React Developer | Web Development`,
     author: `@tobiaszmaj`,
     url: ``,
