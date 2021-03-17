@@ -18,7 +18,7 @@ z-index: 1;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -1px;
     clip-path: polygon(0 calc(100% - 50px), 0% 100%, 100% 100%);
     background: ${({ theme }) => theme.white};
     ${({ theme }) => theme.mq.md} {

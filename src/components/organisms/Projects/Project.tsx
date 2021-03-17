@@ -218,13 +218,25 @@ const Project = ({
     }
   }, []);
 
+  const ImageWrapperComp = (
+    <ImageLink as="div">
+      <Image fluid={image} alt={title} />
+    </ImageLink>
+  );
+
+  const ImageLinkComp = (
+    <ImageLink href={demoLink} rel="noopener noreferrer" target="_blank">
+      <Image fluid={image} alt={title} />
+    </ImageLink>
+  );
+
   return (
     <Wrapper>
       <ImageWrapper>
         <div ref={imageRef}>
-          <ImageLink href={demoLink} rel="noopener noreferrer" target="_blank">
-            <Image fluid={image} alt={title} />
-          </ImageLink>
+          {title.toLowerCase() === 'portfolio'
+            ? ImageWrapperComp
+            : ImageLinkComp}
         </div>
       </ImageWrapper>
       <Content right={right} ref={contentRef}>
@@ -250,16 +262,18 @@ const Project = ({
           ))}
         </Technologies>
         <ButtonsWrapper>
-          <LinkWrapper>
-            <Button
-              as="a"
-              href={demoLink}
-              target="_blanket"
-              rel="noopener noreferrer"
-            >
-              Live Demo
-            </Button>
-          </LinkWrapper>
+          {title.toLowerCase() !== 'portfolio' && (
+            <LinkWrapper>
+              <Button
+                as="a"
+                href={demoLink}
+                target="_blanket"
+                rel="noopener noreferrer"
+              >
+                Live Demo
+              </Button>
+            </LinkWrapper>
+          )}
           <LinkWrapper>
             <Button
               as="a"
