@@ -5,6 +5,7 @@ import FormInput from 'components/molecules/Form/FormInput';
 import { Formik, Form, FormikHelpers, Field } from 'formik';
 import * as Yup from 'yup';
 import Recaptcha from 'react-recaptcha';
+import LazyLoad from 'react-lazyload';
 
 const StyledButton = styled(Button)`
   width: 100%;
@@ -167,17 +168,19 @@ const ContactForm = () => {
                         touched={touched.message}
                         errors={errors.message}
                     />
-                    <Recaptcha
-                        sitekey={process.env.SITE_RECAPTCHA_KEY}
-                        render="explicit"
-                        theme="dark"
-                        verifyCallback={response => {
-                            setToken(response);
-                        }}
-                        onloadCallback={() => {
-                            clearButton();
-                        }}
-                    />
+                    <LazyLoad height={75} offset={300}>
+                        <Recaptcha
+                            sitekey={process.env.SITE_RECAPTCHA_KEY}
+                            render="explicit"
+                            theme="dark"
+                            verifyCallback={response => {
+                                setToken(response);
+                            }}
+                            onloadCallback={() => {
+                                clearButton();
+                            }}
+                        />
+                    </LazyLoad>
                     <StyledButton
                         color={submitBtn.color}
                         animated
