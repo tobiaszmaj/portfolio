@@ -5,7 +5,7 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import styled from 'styled-components';
 import Content from 'components/atoms/Content/Content';
 import Button from 'components/atoms/Button/Button';
-import Title from 'assets/icons/title.inline.svg';
+import TitleSVG from 'assets/icons/title.inline.svg';
 import sendIcon from 'assets/icons/send.svg';
 import useMedia from 'hooks/useMedia';
 
@@ -123,11 +123,15 @@ const Name = styled.span<Props>`
 `;
 
 const PaperPlaneWrapper = styled.div`
+display: none;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: -300px;
+  ${({ theme }) => theme.mq.xl} {
+    display: block;
+  }
 `;
 
 const PaperPlane = styled.img`
@@ -146,7 +150,6 @@ const Header = () => {
   const paperPlaneRef = useRef<HTMLImageElement>(null);
 
   const matches = useMedia('(min-width: 800px)');
-  const matchesDesktop = useMedia('(min-width: 1200px)');
 
   useEffect(() => {
     const title = titleRef.current;
@@ -233,11 +236,9 @@ const Header = () => {
   return (
     <Element name="home">
       <Wrapper>
-        {matchesDesktop && (
-          <PaperPlaneWrapper ref={paperPlaneRef}>
-            <PaperPlane src={sendIcon} alt="paper plane" />
-          </PaperPlaneWrapper>
-        )}
+        <PaperPlaneWrapper ref={paperPlaneRef}>
+          <PaperPlane src={sendIcon} alt="paper plane" />
+        </PaperPlaneWrapper>
         <Content>
           <InnerWrapper>
             <SubTitle ref={subTitleRef}>
@@ -245,7 +246,7 @@ const Header = () => {
               <Name isActive={isLineActive}>Front End Developer</Name>
             </SubTitle>
             <TitleWrapper ref={titleRef}>
-              <Title />
+              <TitleSVG />
             </TitleWrapper>
             <Links ref={linksRef}>
               <LinkWrapper>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
-import TextPlugin from 'gsap/TextPlugin.js';
+import TextPlugin from 'gsap/TextPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import blobImg from 'assets/icons/blob.svg';
 import MainSVG from 'assets/icons/main.inline.svg';
@@ -76,7 +76,7 @@ const Image = styled.img`
   display: block;
   width: 110px;
   height: 110px;
-  top: 110px;
+  top: 210px;
   left: 210px;
 `;
 
