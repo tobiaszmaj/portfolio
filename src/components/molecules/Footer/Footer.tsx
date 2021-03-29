@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.footer`
-  background: ${({ theme }) => theme.dark50};
+  background: ${({ theme }) => theme.black};
   padding: 30px 0;
 `;
 
@@ -16,9 +16,9 @@ const Text = styled.h3`
 `;
 
 const Footer = () => (
-    <Wrapper>
-        <Text>&copy; 2021 Tobiasz Maj. All rights reserved.</Text>
-    </Wrapper>
+  <Wrapper>
+    <Text>&copy; 2021 Tobiasz Maj. All rights reserved.</Text>
+  </Wrapper>
 );
 
 export default Footer;

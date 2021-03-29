@@ -10,7 +10,7 @@ import checkmarkIcon from 'assets/icons/checkmark.svg';
 const Wrapper = styled.section`
 position: relative;
 padding: 50px 0 20px;
-background-color: ${({ theme }) => theme.blue};
+background-color: ${({ theme }) => theme.black};
 z-index: 1;
 &:after {
     content: '';
@@ -133,34 +133,30 @@ const Technologies = () => {
             <InnerWrapper>
               <SectionHeader
                 title="Technologies"
-                paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and unit testing."
+                paragraph="These are technologies, tools and concepts I use in my projects. I'm currently improving myself in TypeScript and Vue.js"
               />
               <ListsWrapper>
                 <StyledList ref={list1Ref}>
                   <ListItem>HTML5</ListItem>
                   <ListItem>CSS3</ListItem>
-                  <ListItem>Sass/SCSS</ListItem>
-                  <ListItem>BEM</ListItem>
-                  <ListItem>Mobile First</ListItem>
+                  <ListItem>Sass</ListItem>
                   <ListItem>JavaScript ES6+</ListItem>
                   <ListItem>TypeScript</ListItem>
                   <ListItem>React & Hooks</ListItem>
                   <ListItem>Redux</ListItem>
                   <ListItem>Gatsby</ListItem>
-                  <ListItem>GraphQL</ListItem>
+                  <ListItem>Next.js</ListItem>
                 </StyledList>
                 <List ref={list2Ref}>
+                  <ListItem>Node.js</ListItem>
+                  <ListItem>MongoDB</ListItem>
                   <ListItem>Jest</ListItem>
-                  <ListItem>React Testing Library</ListItem>
+                  <ListItem>Styled Components</ListItem>
+                  <ListItem>Formik</ListItem>
                   <ListItem>GSAP</ListItem>
                   <ListItem>Framer Motion</ListItem>
-                  <ListItem>CSS Modules</ListItem>
-                  <ListItem>Styled Components</ListItem>
-                  <ListItem>Storybook</ListItem>
-                  <ListItem>Formik & Yup</ListItem>
-                  <ListItem>Atomic design</ListItem>
-                  <ListItem>Axios</ListItem>
-                  <ListItem>Git</ListItem>
+                  <ListItem>Figma</ListItem>
+                  <ListItem>Git & GitHub</ListItem>
                 </List>
               </ListsWrapper>
             </InnerWrapper>

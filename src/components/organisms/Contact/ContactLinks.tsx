@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import githubIcon from 'assets/icons/github.svg';
 import emailIcon from 'assets/icons/email.svg';
 import linkedinIcon from 'assets/icons/linkedin.svg';
-import facebookIcon from 'assets/icons/facebook.svg';
 
 interface IconProps {
     icon: string;
@@ -107,22 +106,6 @@ const ContactLinks = () => (
             <InnerWrapper>
                 <LinkName>LinkedIn</LinkName>
                 <LinkDescription>Let's connect on LinkedIn!</LinkDescription>
-            </InnerWrapper>
-        </LinkItem>
-        <LinkItem>
-            <IconWrapper>
-                <Icon
-                    href=""
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    icon={facebookIcon}
-                />
-            </IconWrapper>
-            <InnerWrapper>
-                <LinkName>Facebook</LinkName>
-                <LinkDescription>
-                    Have a question or any feedback suggestions? Message me on Facebook!
-        </LinkDescription>
             </InnerWrapper>
         </LinkItem>
     </LinksWrapper>

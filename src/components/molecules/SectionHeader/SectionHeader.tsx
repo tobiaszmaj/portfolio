@@ -37,7 +37,7 @@ const Heading = styled.h2<HeadingProps>`
     width: 150px;
     height: 4px;
     background-color: ${({ lineColor, theme }) =>
-    lineColor === 'dark' ? theme.dark200 : theme.white};
+    lineColor === 'dark' ? theme.green : theme.green};
     border-radius: 100px;
     transition: 0.3s;
     transform-origin: 0 50%;

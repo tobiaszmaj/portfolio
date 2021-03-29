@@ -18,8 +18,8 @@ const StyledButton = styled(Button)`
         disabled &&
         css`
       content: '';
-      background-color: ${({ theme }) => theme.blue};
-      border-color: ${({ theme }) => theme.blue};
+      background-color: ${({ theme }) => theme.blueGradient};
+      border-color: ${({ theme }) => theme.blueGradient};
       cursor: default;
     `}
 `;
@@ -60,7 +60,7 @@ const ContactForm = () => {
     const [token, setToken] = useState('');
     const [submitBtn, setSubmitBtn] = useState({
         content: 'Send message',
-        color: 'blue',
+        color: 'blueGradient',
     });
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const ContactForm = () => {
     }, []);
 
     const clearButton = () => {
-        setSubmitBtn({ content: 'Send message', color: 'blue' });
+        setSubmitBtn({ content: 'Send message', color: 'blueGradient' });
     };
 
     return (
@@ -168,7 +168,7 @@ const ContactForm = () => {
                         touched={touched.message}
                         errors={errors.message}
                     />
-                    <LazyLoad height={75} offset={300}>
+                    {/* <LazyLoad height={75} offset={300}>
                         <Recaptcha
                             sitekey={process.env.SITE_RECAPTCHA_KEY}
                             render="explicit"
@@ -180,12 +180,12 @@ const ContactForm = () => {
                                 clearButton();
                             }}
                         />
-                    </LazyLoad>
+                    </LazyLoad> */}
                     <StyledButton
                         color={submitBtn.color}
                         animated
                         submit
-                        disabled={isSubmitting || submitBtn.color !== 'blue'}
+                        disabled={isSubmitting || submitBtn.color !== 'blueGradient'}
                         isSubmitting={isSubmitting}
                         type="submit"
                     >

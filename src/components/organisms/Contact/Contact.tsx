@@ -11,12 +11,12 @@ const Wrapper = styled.section`
   position: relative;
   padding: 50px 0 20px;
   color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.dark100};
+  background-color: ${({ theme }) => theme.dark};
   ${({ theme }) => theme.mq.md} {
     background: url(${planeIcon}) no-repeat;
     background-position: 95% 0%;
     background-size: 190px;
-    background-color: ${({ theme }) => theme.dark100};
+    background-color: ${({ theme }) => theme.dark};
   }
   ${({ theme }) => theme.mq.lg} {
     background-position: 80% 0%;
@@ -31,10 +31,10 @@ const InnerWrapper = styled.div`
 
 const StatusWrapper = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.dark200};
+  background: ${({ theme }) => theme.black};
   padding: 40px 20px;
   border-radius: 10px;
-  border: 2px solid ${({ theme }) => theme.blue};
+  border: 2px solid ${({ theme }) => theme.green};
   text-align: center;
 `;
 

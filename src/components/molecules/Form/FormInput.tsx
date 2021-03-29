@@ -58,7 +58,7 @@ const Label = styled.label<LabelProps>`
 const StyledInput = styled.input<InputProps>`
   width: 100%;
   padding: 15px 30px;
-  background: ${({ theme }) => theme.dark200};
+  background: ${({ theme }) => theme.black};
   font-family: ${({ theme }) => theme.fonts.mainFont};
   font-size: ${({ theme }) => theme.fontSize.xs};
   border: 2px solid ${({ theme }) => theme.dark150};
@@ -68,7 +68,7 @@ const StyledInput = styled.input<InputProps>`
   transition: 0.3s;
   resize: none;
   &:focus {
-    border-color: ${({ theme }) => theme.blue100};
+    border-color: ${({ theme }) => theme.green};
   }
   &:focus + ${Label} {
     color: ${({ theme }) => theme.white};

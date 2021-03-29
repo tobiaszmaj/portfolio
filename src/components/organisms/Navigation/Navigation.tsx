@@ -29,7 +29,7 @@ const Wrapper = styled.nav<Props>`
         isActive &&
         css`
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        background-color: ${({ theme }) => theme.dark100};
+        background-color: ${({ theme }) => theme.black};
       `}
   }
 `;

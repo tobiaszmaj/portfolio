@@ -46,7 +46,7 @@ const Background = styled.div`
   height: 300px;
   border-radius: 50%;
   z-index: -1;
-  background: ${({ theme }) => theme.blueGradient};
+  background: ${({ theme }) => theme.blueGradient2};
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transform: scale(1);
   will-change: transform;

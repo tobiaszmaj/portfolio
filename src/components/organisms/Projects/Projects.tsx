@@ -43,7 +43,7 @@ const Wrapper = styled.section`
     left: 0;
     right: 0;
     bottom: -1px;
-    background: ${({ theme }) => theme.dark100};
+    background: ${({ theme }) => theme.darkGradient};
     clip-path: polygon(100% calc(100% - 50px), 0% 100%, 100% 100%);
     ${({ theme }) => theme.mq.md} {
       clip-path: polygon(100% calc(100% - 110px), 0% 100%, 100% 100%);

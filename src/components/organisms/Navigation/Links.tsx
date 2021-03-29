@@ -18,7 +18,7 @@ const ListItem = styled.li<ItemProps>`
   margin-left: 35px;
   font-weight: ${({ theme }) => theme.medium};
   &:hover {
-    color: ${({ theme }) => theme.blue100};
+    color: ${({ theme }) => theme.green};
     &:after {
       transform: scaleX(1);
     }
@@ -30,7 +30,7 @@ const ListItem = styled.li<ItemProps>`
     bottom: -10px;
     width: 30px;
     height: 2px;
-    background-color: ${({ theme }) => theme.blue100};
+    background-color: ${({ theme }) => theme.green};
     transition: 0.3s;
     transform: scaleX(0);
     transform-origin: 0 50%;
@@ -38,7 +38,7 @@ const ListItem = styled.li<ItemProps>`
   ${({ isActive }) =>
     isActive &&
     css`
-      color: ${({ theme }) => theme.blue100};
+      color: ${({ theme }) => theme.green};
       &:after {
         transform: scaleX(1);
       }
@@ -47,10 +47,10 @@ const ListItem = styled.li<ItemProps>`
     big &&
     css`
       margin: 20px 0;
-      color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.black};
       font-size: ${({ theme }) => theme.fontSize.xl};
       &:hover {
-        color: ${({ theme }) => theme.white};
+        color: ${({ theme }) => theme.black};
       }
       &:after {
         transform: ${isActive ? 'scaleX(1)' : 'scaleX(0.3)'};
@@ -58,7 +58,7 @@ const ListItem = styled.li<ItemProps>`
         width: 100px;
         height: 4px;
         border-radius: 100px;
-        background-color: ${({ theme }) => theme.white};
+        background-color: ${({ theme }) => theme.black};
       }
       ${({ theme }) => theme.mq.s} {
         font-size: ${({ theme }) => theme.fontSize.xxl};

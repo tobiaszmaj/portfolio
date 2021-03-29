@@ -28,7 +28,7 @@ const Wrapper = styled.header`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${({ theme }) => theme.blue};
+    background: ${({ theme }) => theme.black};
     clip-path: polygon(100% calc(100% - 50px), 0% 100%, 100% 100%);
     ${({ theme }) => theme.mq.md} {
       clip-path: polygon(100% calc(100% - 110px), 0% 100%, 100% 100%);

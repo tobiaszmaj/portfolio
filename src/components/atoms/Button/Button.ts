@@ -29,34 +29,35 @@ const spin = keyframes`
 
 const Button = styled.button<Props>`
   display: block;
-  width: 220px;
-  padding: 20px;
+  width: 180px;
+  padding: 16px;
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.s};
   font-family: ${({ theme }) => theme.fonts.mainFont};
-  border: 2px solid ${({ theme }) => theme.blue};
-  background: ${({ theme }) => theme.blue};
-  color: ${({ theme }) => theme.dark};
+  border: 2px solid ${({ theme }) => theme.white};
+  background: ${({ theme }) => theme.blueGradient};
+  color: ${({ theme }) => theme.black};
   transition: 0.3s all;
-  border-radius: 50px;
+  border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
   &:hover {
     background: ${({ theme }) => theme.white};
     border-color: ${({ theme }) => theme.white};
-    color: ${({ theme }) => theme.dark};
+    color: ${({ theme }) => theme.black};
   }
   ${({ secondary }) =>
     secondary &&
     css`
       background: transparent;
-      color: ${({ theme }) => theme.blue} !important;
+      color: ${({ theme }) => theme.green} !important;
+      border: 2px solid ${({ theme }) => theme.green};
     `}
     ${({ submit }) =>
     submit &&
     css`
-      border-color: ${({ theme }) => theme.blue};
-      background: ${({ theme }) => theme.blue};
+      border-color: ${({ theme }) => theme.white};
+      background: ${({ theme }) => theme.blueGradient};
       color: ${({ theme }) => theme.white};
       font-size: ${({ theme }) => theme.fontSize.m};
       position: relative;
@@ -78,7 +79,7 @@ const Button = styled.button<Props>`
         border: 3px solid ${({ theme }) => theme.white};
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
-        border-radius: 50%;
+        border-radius: 0;
         opacity: ${({ isSubmitting }) => (isSubmitting ? '1' : '0')};
         animation: ${spin} 1s ease infinite;
       }
