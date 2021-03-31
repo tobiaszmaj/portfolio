@@ -1,4 +1,4 @@
-# Portfolio - Tobiasz Maj
+# Portfolio
 
 My personal website made with Gatsby and Typescript. 
 
