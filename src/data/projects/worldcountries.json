@@ -1,10 +1,10 @@
 {
-    "order": 4,
-    "title": "Where in the world?",
+    "order": 1,
+    "title": "World countries",
     "description": "The app made with Gatsby. It uses restcountries.eu API to get informations about any country in the world.",
-    "image": "../../assets/images/whereintheworld-project.jpeg",
-    "codeLink": "",
-    "demoLink": "",
+    "image": "../../assets/images/worldcountries-project.jpeg",
+    "codeLink": "https://github.com/tobiaszmaj/world-countries",
+    "demoLink": "https://tobiaszmaj.github.io/world-countries/",
     "withServer": false,
     "technologies": [
         {
@@ -16,28 +16,16 @@
             "icon": "../../assets/icons/react.svg"
         },
         {
-            "name": "Jest",
-            "icon": "../../assets/icons/jest.svg"
-        },
-        {
             "name": "Framer Motion",
             "icon": "../../assets/icons/framer-motion.svg"
-        },
-        {
-            "name": "React Testing Library",
-            "icon": "../../assets/icons/react.svg"
-        },
-        {
-            "name": "GraphQL",
-            "icon": "../../assets/icons/graphql.svg"
         },
         {
             "name": "Styled Components",
             "icon": "../../assets/icons/styled-components.svg"
         },
         {
-            "name": "Local storage",
-            "icon": "../../assets/icons/storage.svg"
+            "name": "Jest",
+            "icon": "../../assets/icons/jest.svg"
         }
     ]
 }

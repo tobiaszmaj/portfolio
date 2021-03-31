@@ -1,0 +1,19 @@
+{
+    "order": 4,
+    "title": "Space Shooter",
+    "description": "Classic arcade game to practice React Hooks.",
+    "codeLink": "https://github.com/tobiaszmaj/space-shooter",
+    "demoLink": "https://tobiaszmaj.github.io/space-shooter/",
+    "image": "../../assets/images/spaceshooter-project.jpeg",
+    "withServer": false,
+    "technologies": [
+        {
+            "name": "React & Hooks",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "anime.js",
+            "icon": "../../assets/icons/anime.svg"
+        }
+    ]
+}

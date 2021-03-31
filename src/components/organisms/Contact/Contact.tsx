@@ -11,12 +11,12 @@ const Wrapper = styled.section`
   position: relative;
   padding: 50px 0 20px;
   color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.dark};
+  background: ${({ theme }) => theme.darkGradient};
   ${({ theme }) => theme.mq.md} {
     background: url(${planeIcon}) no-repeat;
     background-position: 95% 0%;
     background-size: 190px;
-    background-color: ${({ theme }) => theme.dark};
+    background: ${({ theme }) => theme.darkGradient};
   }
   ${({ theme }) => theme.mq.lg} {
     background-position: 80% 0%;

@@ -137,8 +137,8 @@ const LinkWrapper = styled.div`
       width: 220px;
     }
     &:hover {
-      border-color: ${({ theme }) => theme.dark200};
-      background: ${({ theme }) => theme.dark200};
+      border-color: ${({ theme }) => theme.darkGradient};
+      background: ${({ theme }) => theme.darkGradient};
       color: ${({ theme }) => theme.white};
     }
     ${({ theme }) => theme.mq.lg} {
@@ -250,8 +250,6 @@ const Project = ({
         )}
         {withServer && (
           <Info>
-            <b>Note:</b> It may take some time till the server starts at the
-            beginning.
           </Info>
         )}
         <Technologies>

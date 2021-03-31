@@ -93,7 +93,7 @@ const Projects = () => {
           <SectionHeader
             lineColor="dark"
             title="My Projects"
-            paragraph="All of my projects are on GitHub. Most of them are made with React. Below are some of my favorites. Currently I'm keep learning TypeScript and my favorite - Gatsby."
+            paragraph="All of my projects are on GitHub. Most of them are made with React. Below are some of my favorites. Currently I'm keep learning TypeScript and Vue.js."
           />
           <InnerWrapper>
             {allProjectsJson.nodes.map(

@@ -1,0 +1,31 @@
+{
+    "order": 2,
+    "title": "Officelite",
+    "description": "Landing page made with Next.js, Framer Motion and Formik.",
+    "image": "../../assets/images/officelite-project.jpeg",
+    "codeLink": "https://github.com/tobiaszmaj/officelite",
+    "demoLink": "http://officelite-inky.vercel.app/",
+    "withServer": false,
+    "technologies": [
+        {
+            "name": "Next.js",
+            "icon": "../../assets/icons/next.svg"
+        },
+        {
+            "name": "React",
+            "icon": "../../assets/icons/react.svg"
+        },
+        {
+            "name": "Framer Motion",
+            "icon": "../../assets/icons/framer-motion.svg"
+        },
+        {
+            "name": "Formik",
+            "icon": "../../assets/icons/formik.svg"
+        },
+        {
+            "name": "Sass",
+            "icon": "../../assets/icons/sass.svg"
+        }
+    ]
+}

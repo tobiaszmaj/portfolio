@@ -1,0 +1,19 @@
+{
+    "order": 5,
+    "title": "Social Media Dashboard",
+    "description": "Admin Dashboard made with Vue.js.",
+    "image": "../../assets/images/dashboard-project.jpeg",
+    "codeLink": "https://github.com/tobiaszmaj/social-media-dashboard",
+    "demoLink": "https://tobiaszmaj.github.io/social-media-dashboard/",
+    "withServer": false,
+    "technologies": [
+        {
+            "name": "Vue.js",
+            "icon": "../../assets/icons/vue.svg"
+        },
+        {
+            "name": "Sass",
+            "icon": "../../assets/icons/sass.svg"
+        }
+    ]
+}

@@ -5,7 +5,7 @@ import emailIcon from 'assets/icons/email.svg';
 import linkedinIcon from 'assets/icons/linkedin.svg';
 
 interface IconProps {
-    icon: string;
+  icon: string;
 }
 
 const InnerWrapper = styled.div`
@@ -66,49 +66,49 @@ const Icon = styled.a<IconProps>`
 `;
 
 const ContactLinks = () => (
-    <LinksWrapper>
-        <LinkItem>
-            <IconWrapper>
-                <Icon href="mailto:tobiaszmaj2@gmail.com" icon={emailIcon} />
-            </IconWrapper>
-            <InnerWrapper>
-                <LinkName>Email</LinkName>
-                <LinkDescription>
-                    Contact me by email - <b>tobiaszmaj2@gmail.com</b>
-                </LinkDescription>
-            </InnerWrapper>
-        </LinkItem>
-        <LinkItem>
-            <IconWrapper>
-                <Icon
-                    href="https://github.com/tobiaszmaj"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    icon={githubIcon}
-                />
-            </IconWrapper>
-            <InnerWrapper>
-                <LinkName>GitHub</LinkName>
-                <LinkDescription>
-                    Would you like to see my code? Take a look at my GitHub repositories!
+  <LinksWrapper>
+    <LinkItem>
+      <IconWrapper>
+        <Icon href="mailto:tobiaszmaj2@gmail.com" icon={emailIcon} />
+      </IconWrapper>
+      <InnerWrapper>
+        <LinkName>Email</LinkName>
+        <LinkDescription>
+          Contact me by email - <b>tobiaszmaj2@gmail.com</b>
         </LinkDescription>
-            </InnerWrapper>
-        </LinkItem>
-        <LinkItem>
-            <IconWrapper>
-                <Icon
-                    href="https://www.linkedin.com/in/tobiaszmaj/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    icon={linkedinIcon}
-                />
-            </IconWrapper>
-            <InnerWrapper>
-                <LinkName>LinkedIn</LinkName>
-                <LinkDescription>Let's connect on LinkedIn!</LinkDescription>
-            </InnerWrapper>
-        </LinkItem>
-    </LinksWrapper>
+      </InnerWrapper>
+    </LinkItem>
+    <LinkItem>
+      <IconWrapper>
+        <Icon
+          href="https://github.com/tobiaszmaj"
+          target="_blank"
+          rel="noopener noreferrer"
+          icon={githubIcon}
+        />
+      </IconWrapper>
+      <InnerWrapper>
+        <LinkName>GitHub</LinkName>
+        <LinkDescription>
+          Would you like to see my code? Take a look at my GitHub repositories!
+        </LinkDescription>
+      </InnerWrapper>
+    </LinkItem>
+    <LinkItem>
+      <IconWrapper>
+        <Icon
+          href="https://www.linkedin.com/in/tobiaszmaj/"
+          target="_blank"
+          rel="noopener noreferrer"
+          icon={linkedinIcon}
+        />
+      </IconWrapper>
+      <InnerWrapper>
+        <LinkName>LinkedIn</LinkName>
+        <LinkDescription>Let's connect on LinkedIn!</LinkDescription>
+      </InnerWrapper>
+    </LinkItem>
+  </LinksWrapper>
 );
 
 export default ContactLinks;

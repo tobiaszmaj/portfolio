@@ -66,9 +66,9 @@ const Button = styled.button<Props>`
       align-items: center;
       height: 70px;
       &:hover {
-        border-color: ${({ theme }) => theme.blue100};
-        color: ${({ theme }) => theme.white};
-        background: transparent;
+        border-color: ${({ theme }) => theme.white};
+        color: ${({ theme }) => theme.black};
+        background: ${({ theme }) => theme.white};
         background-size: 150%;
       }
       &:before {
