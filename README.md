@@ -6,7 +6,7 @@ My personal website made with Gatsby and Typescript.
 
 ## Demo
 
-Check out the demo! - [LINK]
+Check out the demo! - [LINK](https://portfolio-tobiaszmaj.vercel.app/)
 
 ## Technologies
 
