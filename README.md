@@ -2,28 +2,19 @@
 
 My personal website made with Gatsby and Typescript. 
 
-![Preview](preview.png)
+![Design preview](preview.gif)
 
 ## Demo
 
-Demo - 
+Check out the demo! - [LINK]
 
 ## Technologies
 
-* TypeScript
-* Gatsby v2.23.12
-* React Hooks
-* React v16.12.0
-* React Scroll
-* GraphQL
-* GSAP
-* Styled Components
-* Formik & Yup
-* Husky & lint-staged
-* React Testing Library
-* Jest
-* Atomic design
-
-## Credits and sources
-
-Icons: flaticon.com & isometric.online
+* [TypeScript](https://www.typescriptlang.org/)
+* [Gatsby](https://www.gatsbyjs.com/)
+* [React with Hooks](https://reactjs.org/)
+* [GSAP](https://greensock.com/gsap/)
+* [styled-components](https://styled-components.com/)
+* [Formik](https://formik.org/)
+* [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+* [Jest](https://jestjs.io/)
