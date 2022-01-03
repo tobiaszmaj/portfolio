@@ -17,7 +17,7 @@ const Text = styled.h3`
 
 const Footer = () => (
   <Wrapper>
-    <Text>&copy; 2021 Tobiasz Maj. All rights reserved.</Text>
+    <Text>&copy; 2022 Tobiasz Maj. All rights reserved.</Text>
   </Wrapper>
 );
 
